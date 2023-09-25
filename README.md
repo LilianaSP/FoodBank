@@ -15,7 +15,7 @@ Proyecto creado para el banco de alimentos con fines administrativos para poder 
 3. Cuando crean una nueva Activity dentro del proyecto, se crea un nuevo archivo .xml ahí es donde van a modificar cualquier cosa del front-end correspondiente a su activity
 4. Pueden agregar los drawables que quieran y que consideren necesario para darle formato a su activity. mientras no modifiquen drawables que no son suyos no tiene de qué preocuparse.**¡Denle estilo!**
 5. **IMPORTANTE: No modificar los archivos de los demás para evitar merge conflicts. Puden reusar código de front end de los demás, pero no modifiquen archivos que no son suyos**
- ![Selección de Activity](tutorial(1).png)
+ ![Selección de Activity](tutorial.png)
 
 
 
