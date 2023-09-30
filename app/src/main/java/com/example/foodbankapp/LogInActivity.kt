@@ -3,18 +3,24 @@ package com.example.foodbankapp
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Debug
+import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
+import com.google.firebase.auth.FirebaseAuth
 
 class LogInActivity : AppCompatActivity() {
-    // Aquí se inicializa la base de datos con auth para la autenticación "private lateinit var auth:FirebaseAuth"
+
+    private lateinit var auth: FirebaseAuth;
+
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_log_in)
-
-        // Se llama al auth "auth=FirebaseAuth.getInstance()"
+        auth=FirebaseAuth.getInstance()
 
         // Obtenemos nuestro botón de LogIn por id
         var loginButton = findViewById<Button>(R.id.LogInButton)
@@ -42,16 +48,18 @@ class LogInActivity : AppCompatActivity() {
         }
 
 
-        // convertirmos nuestras entrads de texto en string estas son las variables que se van a utilizar para llamar a la función de "auth.signInWithEmailAndPassword(email,password)"
-        val email = emailInput.text.toString()
-        val password = passwordInput.text.toString()
+
 
 
         //Creamos la funcionalidad del botón para el cambio de activity y la programación con la base de datos
-        /* EJEMPLO DE COMO SE VERIA IMPLEMENTADO
          loginButton.setOnClickListener{
             if (checking())
             {
+                // convertirmos nuestras entrads de texto en string estas son las variables que se van a utilizar para llamar a la función de "auth.signInWithEmailAndPassword(email,password)"
+                val email = emailInput.text.toString()
+                val password = passwordInput.text.toString()
+                Log.d("AQUI MERO",email)
+                Log.d("AQUI MERO",password)
 
                 auth.signInWithEmailAndPassword(email,password)
                     .addOnCompleteListener(this){
@@ -59,7 +67,7 @@ class LogInActivity : AppCompatActivity() {
                         if(task.isSuccessful)
                         {
                         // Aquí es donde si el inicio de sesión fue exitoso, se cambia a la activity de logged In
-                            var intent = Intent(this, LoggedInActivity::class.java)
+                            var intent = Intent(this, Dashboard::class.java)
                             intent.putExtra("email", email)
                             startActivity(intent)
                             Toast.makeText(this, "Login Successful!", Toast.LENGTH_LONG).show()
@@ -77,17 +85,6 @@ class LogInActivity : AppCompatActivity() {
                 Toast.makeText(this, "Enter the Details", Toast.LENGTH_LONG).show()
             }
         }
-
-        */
-
-
-
-
-
-
-
-
-
 
 
 
