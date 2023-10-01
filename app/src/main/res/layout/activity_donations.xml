@@ -149,11 +149,70 @@
         app:layout_constraintTop_toTopOf="@+id/dontations_navbar"
         app:layout_constraintVertical_bias="0.888" />
 
+    <TextView
+        android:id="@+id/textViewMoney"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:text="Dinero"
+        app:layout_constraintBottom_toTopOf="@+id/progressBarMoney"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        android:textColor="#33b84b"
+        android:fontFamily="sans-serif-medium"
+        android:textSize="20sp"
+        android:textStyle="bold"
+    />
+
+    <TextView
+        android:id="@+id/textViewDonationMoney"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="0"
+        android:textColor="#33b84b"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/progressBarMoney"
+        app:layout_constraintStart_toStartOf="@+id/progressBarMoney"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/textViewGoalMoney"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="0"
+        android:textColor="#9d9a9a"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/progressBarMoney"
+        app:layout_constraintEnd_toEndOf="@+id/progressBarMoney"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/textViewTitleGoalMoney"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="8dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="Objetivo:"
+        android:textColor="#9d9a9a"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/progressBarMoney"
+        app:layout_constraintEnd_toStartOf="@+id/textViewGoalMoney"
+        tools:ignore="MissingConstraints" />
+
     <ProgressBar
         android:id="@+id/progressBarMoney"
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="381dp"
-        android:layout_height="70dp"
+        android:layout_height="60dp"
         android:layout_gravity="center"
         android:max="100"
         android:progress="50"
@@ -161,14 +220,73 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteY="321dp"
+        tools:layout_editor_absoluteY="321dp" />
+
+    <TextView
+        android:id="@+id/textViewMeds"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:text="Medicinas"
+        app:layout_constraintBottom_toTopOf="@+id/progressBarMeds"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        android:textColor="#2D8DE5"
+        android:fontFamily="sans-serif-medium"
+        android:textSize="20sp"
+        android:textStyle="bold"
     />
+
+    <TextView
+        android:id="@+id/textViewDonationMeds"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="0"
+        android:textColor="#2D8DE5"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/progressBarMeds"
+        app:layout_constraintStart_toStartOf="@+id/progressBarMeds"
+        tools:ignore="MissingConstraints"
+    />
+
+    <TextView
+        android:id="@+id/textViewTitleGoalMeds"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="8dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="Objetivo:"
+        android:textColor="#9d9a9a"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/progressBarMeds"
+        app:layout_constraintEnd_toStartOf="@+id/textViewGoalMeds"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/textViewGoalMeds"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="0"
+        android:textColor="#9d9a9a"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/progressBarMeds"
+        app:layout_constraintEnd_toEndOf="@+id/progressBarMeds"
+        tools:ignore="MissingConstraints" />
 
     <ProgressBar
         android:id="@+id/progressBarMeds"
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="381dp"
-        android:layout_height="70dp"
+        android:layout_height="60dp"
         android:layout_gravity="center"
         android:layout_marginTop="45dp"
         android:max="100"
@@ -181,11 +299,71 @@
         tools:ignore="MissingConstraints"
     />
 
+    <TextView
+        android:id="@+id/textViewFood"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:text="Comida"
+        app:layout_constraintBottom_toTopOf="@+id/progressBarFood"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        android:textColor="#F5BF13"
+        android:fontFamily="sans-serif-medium"
+        android:textSize="20sp"
+        android:textStyle="bold"
+    />
+
+    <TextView
+        android:id="@+id/textViewDonationFood"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="0"
+        android:textColor="#F5BF13"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/progressBarFood"
+        app:layout_constraintStart_toStartOf="@+id/progressBarFood"
+        tools:ignore="MissingConstraints"
+        />
+
+    <TextView
+        android:id="@+id/textViewTitleGoalFood"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="8dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="Objetivo:"
+        android:textColor="#9d9a9a"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/progressBarFood"
+        app:layout_constraintEnd_toStartOf="@+id/textViewGoalFood"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/textViewGoalFood"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="0"
+        android:textColor="#9d9a9a"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/progressBarFood"
+        app:layout_constraintEnd_toEndOf="@+id/progressBarFood"
+        tools:ignore="MissingConstraints" />
+
     <ProgressBar
         android:id="@+id/progressBarFood"
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="381dp"
-        android:layout_height="70dp"
+        android:layout_height="60dp"
         android:layout_gravity="center"
         android:layout_marginTop="45dp"
         android:max="100"
