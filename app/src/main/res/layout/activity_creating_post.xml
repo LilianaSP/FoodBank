@@ -6,17 +6,17 @@
     android:layout_height="match_parent"
     tools:context=".CreatingPost">
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="413dp"
-        android:layout_height="82dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <RelativeLayout
+        android:id="@+id/relativeLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.008"
-        app:srcCompat="@drawable/redframe" />
+        app:layout_constraintTop_toTopOf="parent">
+
+
+    </RelativeLayout>
 
     <ImageView
         android:id="@+id/imageView3"
@@ -28,6 +28,56 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/upperredframe" />
+        app:srcCompat="@drawable/upperredframe"
+    />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="82dp"
+        android:background="@drawable/background_with_border_bottom"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.008"
+    />
+
+
+    <Button
+        android:id="@+id/signUpButton"
+        android:layout_width="104dp"
+        android:layout_height="33dp"
+        android:layout_centerInParent="true"
+        android:background="@drawable/yellow_button_add_picvid"
+        android:fontFamily="sans-serif-black"
+        android:foreground="@drawable/yellow_button_add_picvid"
+        android:text="Subir foto"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/imageView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView3"
+        app:layout_constraintVertical_bias="0.979" />
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="97dp"
+        android:layout_height="32dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="Subir foto"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/signUpButton"
+        app:layout_constraintEnd_toEndOf="@+id/signUpButton"
+        app:layout_constraintHorizontal_bias="0.333"
+        app:layout_constraintStart_toStartOf="@+id/signUpButton"
+        app:layout_constraintTop_toTopOf="@+id/signUpButton"
+        app:layout_constraintVertical_bias="1.0" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

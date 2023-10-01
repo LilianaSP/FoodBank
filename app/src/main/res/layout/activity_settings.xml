@@ -72,6 +72,7 @@
         android:foreground="@drawable/green_button_cutom_input"
         android:textSize="30sp"
         android:textStyle="bold"
+        android:text="Atrás"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.062"
