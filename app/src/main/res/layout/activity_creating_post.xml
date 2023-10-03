@@ -44,40 +44,41 @@
         app:layout_constraintVertical_bias="1.008"
     />
 
-
     <Button
-        android:id="@+id/signUpButton"
-        android:layout_width="104dp"
-        android:layout_height="33dp"
+        android:id="@+id/mont_donationms"
+        android:layout_width="155dp"
+        android:layout_height="48dp"
         android:layout_centerInParent="true"
         android:background="@drawable/yellow_button_add_picvid"
         android:fontFamily="sans-serif-black"
         android:foreground="@drawable/yellow_button_add_picvid"
-        android:text="Subir foto"
         android:textSize="30sp"
         android:textStyle="bold"
+        android:text="Subir foto"
         app:layout_constraintBottom_toTopOf="@+id/imageView"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.218"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView3"
-        app:layout_constraintVertical_bias="0.979" />
+        app:layout_constraintVertical_bias="0.232" />
+
 
     <TextView
-        android:id="@+id/textView11"
-        android:layout_width="97dp"
-        android:layout_height="32dp"
+        android:id="@+id/textMesDonacion"
+        android:layout_width="155dp"
+        android:layout_height="48dp"
         android:fontFamily="sans-serif-medium"
         android:text="Subir foto"
         android:textAlignment="center"
-        android:textColor="#FFFFFF"
-        android:textSize="20sp"
+        android:textColor="@color/white"
+        android:textSize="30sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/signUpButton"
-        app:layout_constraintEnd_toEndOf="@+id/signUpButton"
-        app:layout_constraintHorizontal_bias="0.333"
-        app:layout_constraintStart_toStartOf="@+id/signUpButton"
-        app:layout_constraintTop_toTopOf="@+id/signUpButton"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintBottom_toBottomOf="@+id/mont_donationms"
+        app:layout_constraintEnd_toEndOf="@+id/mont_donationms"
+        app:layout_constraintHorizontal_bias="0.571"
+        app:layout_constraintStart_toStartOf="@+id/mont_donationms"
+        app:layout_constraintTop_toTopOf="@+id/mont_donationms"
+        app:layout_constraintVertical_bias="0.0" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
