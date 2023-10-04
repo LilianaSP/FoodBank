@@ -7,6 +7,7 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.Button
 import android.widget.PopupMenu
+import android.widget.ProgressBar
 
 class Donations : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -64,5 +65,41 @@ class Donations : AppCompatActivity() {
         btnSettDonation.setOnClickListener { view: View ->
             popupMenu.show()
         }
+
+        // ************ Progress bars
+        // MONEY:
+        // Obtener referencia al ProgressBar
+        val progressBarMoney = findViewById<ProgressBar>(R.id.progressBarMoney)
+
+        // Configurar el valor máximo y la cantidad acumulada
+        val maxValueMon = 100 // Valor máximo deseado
+        val currentProgressMon = 10 // Valor actual deseado
+
+        // Asignar los valores al ProgressBar
+        progressBarMoney.max = maxValueMon
+        progressBarMoney.progress = currentProgressMon
+
+        // MEDS:
+        // Obtener referencia al ProgressBar
+        val progressBarMeds = findViewById<ProgressBar>(R.id.progressBarMeds)
+
+        // Configurar el valor máximo y la cantidad acumulada
+        val maxValueMeds = 100 // Valor máximo deseado
+        val currentProgressMeds = 80 // Valor actual deseado
+
+        // Asignar los valores al ProgressBar
+        progressBarMeds.max = maxValueMeds
+        progressBarMeds.progress = currentProgressMeds
+
+        // FOOD:
+        val progressBarFood = findViewById<ProgressBar>(R.id.progressBarFood)
+
+        // Configurar el valor máximo y la cantidad acumulada
+        val maxValueFood = 100 // Valor máximo deseado
+        val currentProgressFood = 30 // Valor actual deseado
+
+        // Asignar los valores al ProgressBar
+        progressBarFood.max = maxValueFood
+        progressBarFood.progress = currentProgressFood
     }
 }
