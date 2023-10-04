@@ -166,21 +166,6 @@
         tools:ignore="MissingConstraints" />
 
     <TextView
-        android:id="@+id/textViewTitleGoalFood"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="12dp"
-        android:layout_marginBottom="12dp"
-        android:fontFamily="sans-serif-medium"
-        android:text="Objetivo:"
-        android:textColor="#9d9a9a"
-        android:textSize="17sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/progressBarFood"
-        app:layout_constraintEnd_toStartOf="@+id/textViewGoalFood"
-        tools:ignore="MissingConstraints" />
-
-    <TextView
         android:id="@+id/textViewGoalMeds"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -206,21 +191,6 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/progressBarFood"
         app:layout_constraintEnd_toEndOf="@+id/progressBarFood"
-        tools:ignore="MissingConstraints" />
-
-    <TextView
-        android:id="@+id/textViewTitleGoalMeds"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="12dp"
-        android:layout_marginBottom="4dp"
-        android:fontFamily="sans-serif-medium"
-        android:text="Objetivo:"
-        android:textColor="#9d9a9a"
-        android:textSize="17sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/progressBarMeds"
-        app:layout_constraintEnd_toStartOf="@+id/textViewGoalMeds"
         tools:ignore="MissingConstraints" />
 
     <ProgressBar
@@ -288,20 +258,6 @@
         app:layout_constraintStart_toStartOf="@+id/progressBarMeds"
         tools:ignore="MissingConstraints" />
 
-    <TextView
-        android:id="@+id/textViewTitleGoalMoney"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="12dp"
-        android:layout_marginBottom="4dp"
-        android:fontFamily="sans-serif-medium"
-        android:text="Objetivo:"
-        android:textColor="#9d9a9a"
-        android:textSize="17sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/progressBarMoney"
-        app:layout_constraintEnd_toStartOf="@+id/textViewGoalMoney"
-        tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/textViewDonationMoney"

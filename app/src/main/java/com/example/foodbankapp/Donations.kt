@@ -8,6 +8,7 @@ import android.view.View
 import android.widget.Button
 import android.widget.PopupMenu
 import android.widget.ProgressBar
+import android.widget.TextView
 
 class Donations : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -67,40 +68,74 @@ class Donations : AppCompatActivity() {
             settingsPopupMenu.show()
         }
 
-        // ************ Progress bars
-        // MONEY:
+        // ************ Progress bars ************** //
+
+        // >>>>>>>>> MONEY:
+
         // Obtener referencia al ProgressBar
         val progressBarMoney = findViewById<ProgressBar>(R.id.progressBarMoney)
+        // Obtenemos en variables los valores de los números de progreso y objetivo
+        val progressTextMoney = findViewById<TextView>(R.id.textViewDonationMoney)
+        val goalTextMoney = findViewById<TextView>(R.id.textViewGoalMoney)
 
-        // Configurar el valor máximo y la cantidad acumulada
-        val maxValueMon = 100 // Valor máximo deseado
-        val currentProgressMon =90 // Valor actual deseado
+        // Configurar la cantidad acumulada --> Valor actual
+        val currentProgressMon =20 // *VARIABLE PARA BACKEND!!
 
         // Asignar los valores al ProgressBar
-        progressBarMoney.max = maxValueMon
         progressBarMoney.progress = currentProgressMon
 
-        // MEDS:
+        // Establece el texto del progreso actual en el TextView
+        progressTextMoney.text = "$currentProgressMon%"
+
+        // Define el objetivo (puedes cambiar este valor según tus necesidades)
+        val goalMoney = 100 //**VARIABLE PARA BACKEND!!
+
+        // Establece el texto del objetivo en el TextView
+        goalTextMoney.text = "Objetivo: $goalMoney%"
+
+        // >>>>>>>>>> MEDS:
+
         // Obtener referencia al ProgressBar
         val progressBarMeds = findViewById<ProgressBar>(R.id.progressBarMeds)
+        // Obtenemos en variables los valores de los números de progreso y objetivo
+        val progressTextMeds = findViewById<TextView>(R.id.textViewDonationMeds)
+        val goalTextMeds = findViewById<TextView>(R.id.textViewGoalMeds)
 
-        // Configurar el valor máximo y la cantidad acumulada
-        val maxValueMeds = 100 // Valor máximo deseado
-        val currentProgressMeds = 80 // Valor actual deseado
+        // Configurar la cantidad acumulada --> Valor actual
+        val currentProgressMeds = 30 // ** VARIABLE PARA BACKEND!!
 
         // Asignar los valores al ProgressBar
-        progressBarMeds.max = maxValueMeds
         progressBarMeds.progress = currentProgressMeds
 
-        // FOOD:
-        val progressBarFood = findViewById<ProgressBar>(R.id.progressBarFood)
+        // Establece el texto del progreso actual en el TextView
+        progressTextMeds.text = "$currentProgressMeds%"
 
-        // Configurar el valor máximo y la cantidad acumulada
-        val maxValueFood = 100 // Valor máximo deseado
-        val currentProgressFood = 100 // Valor actual deseado
+        // Define el objetivo (puedes cambiar este valor según tus necesidades)
+        val goalMeds = 100 //** Variables para BACKEND!!
+
+        // Establece el texto del objetivo en el TextView
+        goalTextMeds.text = "Objetivo: $goalMeds%"
+
+        // >>>>>>>>>>> FOOD:
+        // Obtener referencia al ProgressBar
+        val progressBarFood = findViewById<ProgressBar>(R.id.progressBarFood)
+        // Obtenemos en variables los valores de los números de progreso y objetivo
+        val progressTextFood = findViewById<TextView>(R.id.textViewDonationFood)
+        val goalTextFood = findViewById<TextView>(R.id.textViewGoalFood)
+
+        // Configurar la cantidad acumulada --> Valor actual
+        val currentProgressFood = 40 // ** VARIABLES PARA BACKEND!!
 
         // Asignar los valores al ProgressBar
-        progressBarFood.max = maxValueFood
         progressBarFood.progress = currentProgressFood
+
+        // Establece el texto del progreso actual en el TextView
+        progressTextFood.text = "$currentProgressFood%"
+
+        // Objetivo en %
+        val goalFood = 100 //** Variables para BACKEND!!
+
+        // Establece el texto del objetivo en el TextView
+        goalTextFood.text = "Objetivo: $goalFood%"
     }
 }
