@@ -14,6 +14,7 @@ class Donations : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_donations)
 
+        // ******** BUTTONS
         // Obtenemos el botón para desplegar los meses
         val btnMes = findViewById<Button>(R.id.mont_donationms)
         // obtenemos el botón para el settings ...:
@@ -63,7 +64,7 @@ class Donations : AppCompatActivity() {
         }
         // Set a click listener for the button to show the Popup Menu SETTINGS
         btnSettDonation.setOnClickListener { view: View ->
-            popupMenu.show()
+            settingsPopupMenu.show()
         }
 
         // ************ Progress bars
@@ -73,7 +74,7 @@ class Donations : AppCompatActivity() {
 
         // Configurar el valor máximo y la cantidad acumulada
         val maxValueMon = 100 // Valor máximo deseado
-        val currentProgressMon = 10 // Valor actual deseado
+        val currentProgressMon =90 // Valor actual deseado
 
         // Asignar los valores al ProgressBar
         progressBarMoney.max = maxValueMon
@@ -96,7 +97,7 @@ class Donations : AppCompatActivity() {
 
         // Configurar el valor máximo y la cantidad acumulada
         val maxValueFood = 100 // Valor máximo deseado
-        val currentProgressFood = 30 // Valor actual deseado
+        val currentProgressFood = 100 // Valor actual deseado
 
         // Asignar los valores al ProgressBar
         progressBarFood.max = maxValueFood
