@@ -67,7 +67,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.16" />
 
-
     <Button
         android:id="@+id/mont_donationms"
         android:layout_width="155dp"
@@ -87,6 +86,15 @@
         app:layout_constraintVertical_bias="0.232" />
 
 
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/mont_donationms"
+        app:layout_constraintTop_toTopOf="@+id/mont_donationms"
+        app:srcCompat="@drawable/arrow_drop_down"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="68dp" />
+
     <TextView
         android:id="@+id/textMesDonacion"
         android:layout_width="155dp"
@@ -103,16 +111,6 @@
         app:layout_constraintStart_toStartOf="@+id/mont_donationms"
         app:layout_constraintTop_toTopOf="@+id/mont_donationms"
         app:layout_constraintVertical_bias="0.0" />
-
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="@+id/mont_donationms"
-        app:layout_constraintTop_toTopOf="@+id/mont_donationms"
-        app:srcCompat="@drawable/arrow_drop_down"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="68dp" />
 
     <Button
         android:id="@+id/dontations_navbar"
@@ -214,13 +212,14 @@
         android:layout_width="381dp"
         android:layout_height="60dp"
         android:layout_gravity="center"
+        android:layout_marginBottom="268dp"
         android:max="100"
-        android:progress="50"
+        android:progress="60"
         android:progressDrawable="@drawable/progress_bar_money"
+        app:layout_constraintBottom_toTopOf="@+id/imageView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteY="321dp" />
+        tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/textViewMeds"
@@ -292,12 +291,13 @@
         android:max="100"
         android:progress="30"
         android:progressDrawable="@drawable/progress_bar_meds"
+        app:layout_constraintBottom_toTopOf="@+id/imageView"
         app:layout_constraintEnd_toEndOf="@+id/progressBarMoney"
-        app:layout_constraintHorizontal_bias="0.466"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/progressBarMoney"
         app:layout_constraintTop_toBottomOf="@+id/progressBarMoney"
-        tools:ignore="MissingConstraints"
-    />
+        app:layout_constraintVertical_bias="0.0"
+        tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/textViewFood"
@@ -369,12 +369,13 @@
         android:max="100"
         android:progress="80"
         android:progressDrawable="@drawable/progress_bar_food"
+        app:layout_constraintBottom_toTopOf="@+id/imageView"
         app:layout_constraintEnd_toEndOf="@+id/progressBarMoney"
-        app:layout_constraintHorizontal_bias="0.466"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/progressBarMeds"
         app:layout_constraintTop_toBottomOf="@+id/progressBarMeds"
-        tools:ignore="MissingConstraints"
-        />
+        app:layout_constraintVertical_bias="0.015"
+        tools:ignore="MissingConstraints" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
