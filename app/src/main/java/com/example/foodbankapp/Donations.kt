@@ -9,27 +9,24 @@ import android.widget.Button
 import android.widget.PopupMenu
 import android.widget.ProgressBar
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 
 class Donations : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_donations)
 
-        // ******** BUTTONS
-        // Obtenemos el botón para desplegar los meses
+        // ******** BUTTONS POPUP MENUS ***************
+
+        // >>>> MONTH MENU:
+        // Obtenemos el botón para desplegar los meses:
         val btnMes = findViewById<Button>(R.id.mont_donationms)
-        // obtenemos el botón para el settings ...:
-        val btnSettDonation = findViewById<Button>(R.id.dontations_navbar)
 
         // Create a PopupMenu for months
         val popupMenu = PopupMenu(this, btnMes)
-        // Create a PopupMenu for settings
-        val settingsPopupMenu = PopupMenu(this, btnSettDonation)
 
         // Inflate the menu with the month items
         popupMenu.menuInflater.inflate(R.menu.donations_month_menu, popupMenu.menu)
-        // Inflate the settings menu
-        settingsPopupMenu.menuInflater.inflate(R.menu.donations_settings_menu, settingsPopupMenu.menu)
 
         // Set a listener for menu item clicks MONTHS
         popupMenu.setOnMenuItemClickListener { menuItem: MenuItem ->
@@ -45,6 +42,24 @@ class Donations : AppCompatActivity() {
             }
         }
 
+
+
+        // Set a click listener for the button to show the Popup Menu MONTHS
+        btnMes.setOnClickListener { view: View ->
+            popupMenu.show()
+        }
+
+
+        // >>>> SETTINGS MENU:
+        // obtenemos el botón para el settings (...):
+        val btnSettDonation = findViewById<Button>(R.id.dontations_navbar)
+
+        // Create a PopupMenu for settings
+        val settingsPopupMenu = PopupMenu(this, btnSettDonation)
+
+        // Inflate the settings menu
+        settingsPopupMenu.menuInflater.inflate(R.menu.donations_settings_menu, settingsPopupMenu.menu)
+
         // Set a listener for settings menu item clicks SETTINGS
         settingsPopupMenu.setOnMenuItemClickListener { menuItem: MenuItem ->
             // Handle user selection for settings
@@ -59,17 +74,13 @@ class Donations : AppCompatActivity() {
             }
         }
 
-        // Set a click listener for the button to show the Popup Menu MONTHS
-        btnMes.setOnClickListener { view: View ->
-            popupMenu.show()
-        }
+
         // Set a click listener for the button to show the Popup Menu SETTINGS
         btnSettDonation.setOnClickListener { view: View ->
             settingsPopupMenu.show()
         }
 
-        // ************ Progress bars ************** //
-
+        // ************ Progress bars **************
         // >>>>>>>>> MONEY:
 
         // Obtener referencia al ProgressBar
@@ -79,7 +90,7 @@ class Donations : AppCompatActivity() {
         val goalTextMoney = findViewById<TextView>(R.id.textViewGoalMoney)
 
         // Configurar la cantidad acumulada --> Valor actual
-        val currentProgressMon =20 // *VARIABLE PARA BACKEND!!
+        val currentProgressMon =60 // *VARIABLE PARA BACKEND!!
 
         // Asignar los valores al ProgressBar
         progressBarMoney.progress = currentProgressMon
