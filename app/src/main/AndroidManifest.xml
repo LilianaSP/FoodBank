@@ -13,10 +13,31 @@
         android:theme="@style/Theme.FoodBankApp"
         tools:targetApi="31">
         <activity
-            android:name=".SignUp"
+            android:name=".New_password_input"
             android:exported="false" />
         <activity
             android:name=".ResetPassword"
+            android:exported="false" />
+        <activity
+            android:name=".HistorialDonations"
+            android:exported="false" />
+        <activity
+            android:name=".CreatingPost"
+            android:exported="false" />
+        <activity
+            android:name=".Donations"
+            android:exported="false" />
+        <activity
+            android:name=".Settings"
+            android:exported="false" />
+        <activity
+            android:name=".RegisterDonation"
+            android:exported="false" />
+        <activity
+            android:name=".Dashboard"
+            android:exported="false" />
+        <activity
+            android:name=".SignUp"
             android:exported="false" />
         <activity
             android:name=".LoggedInActivity"
