@@ -1,19 +1,18 @@
 package com.example.foodbankapp
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
 
     class SignUp : AppCompatActivity() {
-        private lateinit var auth: FirebaseAuth
-        private lateinit var db: FirebaseFirestore
+        lateinit var auth: FirebaseAuth
+        lateinit var db: FirebaseFirestore
 
         override fun onCreate(savedInstanceState: Bundle?) {
             super.onCreate(savedInstanceState)
@@ -67,7 +66,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 
         }
 
-        private fun checking(): Boolean{
+        fun checking(): Boolean{
             var userName = findViewById<EditText>(R.id.first_name_input)
             var userLname = findViewById<EditText>(R.id.last_name_input)
             var userJob = findViewById<EditText>(R.id.job_type)

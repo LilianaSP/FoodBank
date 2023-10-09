@@ -140,6 +140,7 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView3"
         app:layout_constraintVertical_bias="0.968" />
 
+
     <TextView
         android:id="@+id/Restablecer_password"
         android:layout_width="wrap_content"
@@ -150,11 +151,10 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/LogInButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.156"
+        app:layout_constraintHorizontal_bias="0.203"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/email_Input"
-        app:layout_constraintVertical_bias="0.798" />
-
+        app:layout_constraintVertical_bias="0.852" />
 
     <Button
         android:id="@+id/backButton"
