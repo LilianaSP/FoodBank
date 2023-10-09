@@ -110,7 +110,8 @@
         app:layout_constraintHorizontal_bias="0.571"
         app:layout_constraintStart_toStartOf="@+id/mont_donationms"
         app:layout_constraintTop_toTopOf="@+id/mont_donationms"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.0"
+        />
 
     <Button
         android:id="@+id/dontations_navbar"
