@@ -1,15 +1,13 @@
 package com.example.foodbankapp
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Debug
 import android.util.Log
-import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 
 class LogInActivity : AppCompatActivity() {
@@ -33,7 +31,7 @@ class LogInActivity : AppCompatActivity() {
         var resetPassword = findViewById<TextView>(R.id.Restablecer_password)
         // Creamos la función para el cmabio de activity para la activity de reestablecer la contraseña
         resetPassword.setOnClickListener{
-            var intent = Intent(this, ResetPassword::class.java)
+            var intent = Intent(this, New_password_input::class.java)
             startActivity(intent)
             finish()
         }
@@ -46,6 +44,8 @@ class LogInActivity : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
+
+
 
 
 
