@@ -55,7 +55,8 @@ class LogInActivity : AppCompatActivity() {
          loginButton.setOnClickListener{
             if (checking())
             {
-                // convertirmos nuestras entrads de texto en string estas son las variables que se van a utilizar para llamar a la función de "auth.signInWithEmailAndPassword(email,password)"
+                // convertirmos nuestras entrads de texto en string estas son las variables que se van a utilizar para llamar a la función de
+                // "auth.signInWithEmailAndPassword(email,password)"
                 val email = emailInput.text.toString()
                 val password = passwordInput.text.toString()
                 Log.d("AQUI MERO",email)
@@ -90,7 +91,7 @@ class LogInActivity : AppCompatActivity() {
 
     }
 
-    // Creamos nuestra función para comprobar si se trata de datos vación o no
+    // Creamos nuestra función para comprobar si se trata de datos vacios o no
     private fun checking():Boolean
     {
         var emailInput = findViewById<EditText>(R.id.email_Input)
