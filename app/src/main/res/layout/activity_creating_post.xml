@@ -41,8 +41,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.008"
-    />
+        app:layout_constraintVertical_bias="1.008" />
 
     <Button
         android:id="@+id/btnUploadPic"
@@ -76,8 +75,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/btnUploadPic"
         app:layout_constraintStart_toStartOf="@+id/btnUploadPic"
         app:layout_constraintTop_toTopOf="@+id/btnUploadPic"
-        app:layout_constraintVertical_bias="0.0"
-    />
+        app:layout_constraintVertical_bias="0.0" />
 
     <ImageView
         android:id="@+id/uploadPicIcon"
@@ -91,6 +89,27 @@
         app:layout_constraintVertical_bias="0.375"
         app:srcCompat="@drawable/upload_pic"
     />
+
+    <ScrollView
+        android:layout_width="300dp"
+        android:layout_height="match_parent"
+        android:layout_marginTop="316dp"
+        app:layout_constraintBottom_toBottomOf="@+id/btnUploadPic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnUploadPic"
+        app:layout_constraintVertical_bias="0.291">
+
+        <EditText
+            android:id="@+id/editTextDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Descripción del post..."
+            android:inputType="textMultiLine"
+            android:lines="5"
+            android:scrollbars="vertical" />
+    </ScrollView>
 
     <Button
         android:id="@+id/btnCancel"
