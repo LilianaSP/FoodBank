@@ -9,7 +9,8 @@ import android.widget.Button
 import android.widget.PopupMenu
 import android.widget.ProgressBar
 import android.widget.TextView
-import androidx.core.content.ContextCompat
+import android.view.animation.Animation
+import android.view.animation.Transformation
 
 class Donations : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -127,6 +128,7 @@ class Donations : AppCompatActivity() {
 
         )
 
+        // función para tomar los valores de progress, goal para después mostrarlos
         fun updateProgressBars(selectedMonthData: MonthData) {
             // Actualizar ProgressBar de Money
             progressBarMoney.progress = selectedMonthData.currentProgressMoney
@@ -144,8 +146,39 @@ class Donations : AppCompatActivity() {
             goalTextFood.text = "Objetivo: ${selectedMonthData.goalFood}%"
         }
 
+        // >>>>>>> ANIMATION progress bar
+        // clase progress bar animation
+        class ProgressBarAnimation(
+            private val progressBar: ProgressBar,
+            private val from: Int,
+            private val to: Int
+        ) : Animation() {
+            override fun applyTransformation(interpolatedTime: Float, t: Transformation) {
+                val value = from + (to - from) * interpolatedTime
+                progressBar.progress = value.toInt()
+            }
+        }
+
+        // Función para animar la progress-bar
+        fun animateProgressBar(progressBar: ProgressBar, targetProgress: Int) {
+            val animation = ProgressBarAnimation(progressBar, progressBar.progress, targetProgress)
+            animation.duration = 1000 // Duración de la animación en milisegundos (ajusta según tus preferencias)
+            progressBar.startAnimation(animation)
+        }
+
+        // LISTENER
         popupMenu.setOnMenuItemClickListener { menuItem: MenuItem ->
             when (menuItem.itemId) {
+                R.id.enero, R.id.febrero, R.id.marzo, R.id.abril, R.id.mayo, R.id.junio,
+                R.id.julio, R.id.agosto, R.id.septiembre, R.id.octubre, R.id.noviembre, R.id.diciembre -> {
+                    val selectedMonthData = monthData[menuItem.title.toString().toLowerCase()]
+                    if (selectedMonthData != null) {
+                        animateProgressBar(progressBarMoney, selectedMonthData.currentProgressMoney)
+                        animateProgressBar(progressBarMeds, selectedMonthData.currentProgressMeds)
+                        animateProgressBar(progressBarFood, selectedMonthData.currentProgressFood)
+                    }
+                    return@setOnMenuItemClickListener true
+                }
                 R.id.enero -> {
                     val selectedMonthData = monthData["enero"]
                     if (selectedMonthData != null) {
