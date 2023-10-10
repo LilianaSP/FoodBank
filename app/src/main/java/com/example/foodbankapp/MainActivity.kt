@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         signupButton.setOnClickListener{
-            var intent = Intent(this, Donations::class.java)
+            var intent = Intent(this, CreatingPost::class.java)
             startActivity(intent)
             finish()
         }
