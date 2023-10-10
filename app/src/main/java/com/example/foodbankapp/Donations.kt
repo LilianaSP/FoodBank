@@ -81,28 +81,13 @@ class Donations : AppCompatActivity() {
         }
 
         // ************ Progress bars **************
-        // >>>>>>>>> MONEY:
 
+        // >>>>>>>>> MONEY:
         // Obtener referencia al ProgressBar
         val progressBarMoney = findViewById<ProgressBar>(R.id.progressBarMoney)
         // Obtenemos en variables los valores de los números de progreso y objetivo
         val progressTextMoney = findViewById<TextView>(R.id.textViewDonationMoney)
         val goalTextMoney = findViewById<TextView>(R.id.textViewGoalMoney)
-
-        // Configurar la cantidad acumulada --> Valor actual
-        val currentProgressMon =60 // *VARIABLE PARA BACKEND!!
-
-        // Asignar los valores al ProgressBar
-        progressBarMoney.progress = currentProgressMon
-
-        // Establece el texto del progreso actual en el TextView
-        progressTextMoney.text = "$currentProgressMon%"
-
-        // Define el objetivo (puedes cambiar este valor según tus necesidades)
-        val goalMoney = 100 //**VARIABLE PARA BACKEND!!
-
-        // Establece el texto del objetivo en el TextView
-        goalTextMoney.text = "Objetivo: $goalMoney%"
 
         // >>>>>>>>>> MEDS:
 
@@ -112,21 +97,6 @@ class Donations : AppCompatActivity() {
         val progressTextMeds = findViewById<TextView>(R.id.textViewDonationMeds)
         val goalTextMeds = findViewById<TextView>(R.id.textViewGoalMeds)
 
-        // Configurar la cantidad acumulada --> Valor actual
-        val currentProgressMeds = 30 // ** VARIABLE PARA BACKEND!!
-
-        // Asignar los valores al ProgressBar
-        progressBarMeds.progress = currentProgressMeds
-
-        // Establece el texto del progreso actual en el TextView
-        progressTextMeds.text = "$currentProgressMeds%"
-
-        // Define el objetivo (puedes cambiar este valor según tus necesidades)
-        val goalMeds = 100 //** Variables para BACKEND!!
-
-        // Establece el texto del objetivo en el TextView
-        goalTextMeds.text = "Objetivo: $goalMeds%"
-
         // >>>>>>>>>>> FOOD:
         // Obtener referencia al ProgressBar
         val progressBarFood = findViewById<ProgressBar>(R.id.progressBarFood)
@@ -134,19 +104,125 @@ class Donations : AppCompatActivity() {
         val progressTextFood = findViewById<TextView>(R.id.textViewDonationFood)
         val goalTextFood = findViewById<TextView>(R.id.textViewGoalFood)
 
-        // Configurar la cantidad acumulada --> Valor actual
-        val currentProgressFood = 40 // ** VARIABLES PARA BACKEND!!
+        //********* de manera optimizada
+        // Define una clase para representar los datos del mes
+        data class MonthData(val currentProgressMoney: Int, val goalMoney: Int,
+                             val currentProgressMeds: Int, val goalMeds: Int,
+                             val currentProgressFood: Int, val goalFood: Int)
 
-        // Asignar los valores al ProgressBar
-        progressBarFood.progress = currentProgressFood
+        // DICCIONARIO DE VARIABLES PARA BACK-END (SAM, ANA)!!
+        val monthData = mutableMapOf(
+            "enero" to MonthData(60, 100, 30, 100, 40, 100),
+            "febrero" to MonthData(30, 100, 20, 100, 100, 100),
+            "marzo" to MonthData(10, 100, 30, 100, 40, 100),
+            "abril" to MonthData(20, 100, 90, 100, 100, 100),
+            "mayo" to MonthData(100, 100, 10, 100, 40, 100),
+            "junio" to MonthData(30, 100, 80, 100, 100, 100),
+            "julio" to MonthData(50, 100, 40, 100, 40, 100),
+            "agosto" to MonthData(90, 100, 90, 100, 100, 100),
+            "septiembre" to MonthData(80, 100, 30, 100, 40, 100),
+            "octubre" to MonthData(10, 100, 20, 100, 100, 100),
+            "noviembre" to MonthData(20, 100, 10, 100, 100, 100),
+            "diciembre" to MonthData(55, 100, 23, 100, 40, 100)
 
-        // Establece el texto del progreso actual en el TextView
-        progressTextFood.text = "$currentProgressFood%"
+        )
 
-        // Objetivo en %
-        val goalFood = 100 //** Variables para BACKEND!!
+        fun updateProgressBars(selectedMonthData: MonthData) {
+            // Actualizar ProgressBar de Money
+            progressBarMoney.progress = selectedMonthData.currentProgressMoney
+            progressTextMoney.text = "${selectedMonthData.currentProgressMoney}%"
+            goalTextMoney.text = "Objetivo: ${selectedMonthData.goalMoney}%"
 
-        // Establece el texto del objetivo en el TextView
-        goalTextFood.text = "Objetivo: $goalFood%"
+            // Actualizar ProgressBar de Meds
+            progressBarMeds.progress = selectedMonthData.currentProgressMeds
+            progressTextMeds.text = "${selectedMonthData.currentProgressMeds}%"
+            goalTextMeds.text = "Objetivo: ${selectedMonthData.goalMeds}%"
+
+            // Actualizar ProgressBar de Food
+            progressBarFood.progress = selectedMonthData.currentProgressFood
+            progressTextFood.text = "${selectedMonthData.currentProgressFood}%"
+            goalTextFood.text = "Objetivo: ${selectedMonthData.goalFood}%"
+        }
+
+        popupMenu.setOnMenuItemClickListener { menuItem: MenuItem ->
+            when (menuItem.itemId) {
+                R.id.enero -> {
+                    val selectedMonthData = monthData["enero"]
+                    if (selectedMonthData != null) {
+                        updateProgressBars(selectedMonthData)
+                    }
+                    return@setOnMenuItemClickListener true
+                }R.id.febrero -> {
+                    val selectedMonthData = monthData["febrero"]
+                    if (selectedMonthData != null) {
+                        updateProgressBars(selectedMonthData)
+                    }
+                    return@setOnMenuItemClickListener true
+                }R.id.marzo -> {
+                    val selectedMonthData = monthData["marzo"]
+                    if (selectedMonthData != null) {
+                        updateProgressBars(selectedMonthData)
+                    }
+                    return@setOnMenuItemClickListener true
+                }
+                R.id.abril -> {
+                    val selectedMonthData = monthData["abril"]
+                    if (selectedMonthData != null) {
+                        updateProgressBars(selectedMonthData)
+                    }
+                    return@setOnMenuItemClickListener true
+                }R.id.mayo -> {
+                    val selectedMonthData = monthData["mayo"]
+                    if (selectedMonthData != null) {
+                        updateProgressBars(selectedMonthData)
+                    }
+                    return@setOnMenuItemClickListener true
+                }R.id.junio -> {
+                    val selectedMonthData = monthData["junio"]
+                    if (selectedMonthData != null) {
+                        updateProgressBars(selectedMonthData)
+                    }
+                    return@setOnMenuItemClickListener true
+                }R.id.julio -> {
+                    val selectedMonthData = monthData["julio"]
+                    if (selectedMonthData != null) {
+                        updateProgressBars(selectedMonthData)
+                    }
+                    return@setOnMenuItemClickListener true
+                }
+                R.id.agosto -> {
+                    val selectedMonthData = monthData["agosto"]
+                    if (selectedMonthData != null) {
+                        updateProgressBars(selectedMonthData)
+                    }
+                    return@setOnMenuItemClickListener true
+                }R.id.septiembre -> {
+                    val selectedMonthData = monthData["septiembre"]
+                    if (selectedMonthData != null) {
+                        updateProgressBars(selectedMonthData)
+                    }
+                    return@setOnMenuItemClickListener true
+                }R.id.octubre -> {
+                    val selectedMonthData = monthData["octubre"]
+                    if (selectedMonthData != null) {
+                        updateProgressBars(selectedMonthData)
+                    }
+                    return@setOnMenuItemClickListener true
+                }R.id.noviembre -> {
+                    val selectedMonthData = monthData["noviembre"]
+                    if (selectedMonthData != null) {
+                        updateProgressBars(selectedMonthData)
+                    }
+                    return@setOnMenuItemClickListener true
+                }R.id.diciembre -> {
+                    val selectedMonthData = monthData["diciembre"]
+                    if (selectedMonthData != null) {
+                        updateProgressBars(selectedMonthData)
+                    }
+                    return@setOnMenuItemClickListener true
+                }
+                else -> return@setOnMenuItemClickListener false
+            }
+        }
     }
 }
