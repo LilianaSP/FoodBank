@@ -11,6 +11,7 @@ import android.widget.ProgressBar
 import android.widget.TextView
 import android.view.animation.Animation
 import android.view.animation.Transformation
+import android.widget.ImageView
 
 class Donations : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -111,10 +112,22 @@ class Donations : AppCompatActivity() {
             "agosto" to MonthData(90, 100, 90, 100, 100, 100),
             "septiembre" to MonthData(80, 100, 30, 100, 40, 100),
             "octubre" to MonthData(10, 100, 20, 100, 100, 100),
-            "noviembre" to MonthData(20, 100, 10, 100, 100, 100),
+            "noviembre" to MonthData(100, 100, 100, 100, 100, 100),
             "diciembre" to MonthData(55, 100, 23, 100, 40, 100)
 
         )
+
+        // Función para actualizar el emoji dependiendo de si se alcanza el objetivo
+        fun updateEmoji(progressBar: ProgressBar, goal: Int, emojiViewId: Int) {
+            val emojiImageView = findViewById<ImageView>(emojiViewId)
+
+            if (progressBar.progress >= goal) {
+                emojiImageView.visibility = View.VISIBLE // Mostrar el emoji si se alcanza el objetivo
+                emojiImageView.setImageResource(R.drawable.if_progress_completed) // Cambia el emoji de éxito
+            } else {
+                emojiImageView.visibility = View.INVISIBLE // Ocultar el emoji si no se alcanza el objetivo
+            }
+        }
 
         // función para tomar los valores de progress, goal para después mostrarlos
         fun updateProgressBars(selectedMonthData: MonthData) {
@@ -122,16 +135,19 @@ class Donations : AppCompatActivity() {
             progressBarMoney.progress = selectedMonthData.currentProgressMoney
             progressTextMoney.text = "${selectedMonthData.currentProgressMoney} Pzs"
             goalTextMoney.text = "Objetivo: ${selectedMonthData.goalMoney} Pzs"
+            updateEmoji(progressBarMoney, selectedMonthData.goalMoney, R.id.moneyEmoji) // Llamada a la función para actualizar el emoji
 
             // Actualizar ProgressBar de Meds
             progressBarMeds.progress = selectedMonthData.currentProgressMeds
             progressTextMeds.text = "${selectedMonthData.currentProgressMeds} Pzs"
             goalTextMeds.text = "Objetivo: ${selectedMonthData.goalMeds} Pzs"
+            updateEmoji(progressBarMeds, selectedMonthData.goalMeds, R.id.medsEmoji)
 
             // Actualizar ProgressBar de Food
             progressBarFood.progress = selectedMonthData.currentProgressFood
             progressTextFood.text = "${selectedMonthData.currentProgressFood} Kg"
             goalTextFood.text = "Objetivo: ${selectedMonthData.goalFood} Kg"
+            updateEmoji(progressBarFood, selectedMonthData.goalFood, R.id.foodEmoji)
         }
 
         // >>>>>>> ANIMATION progress bar
