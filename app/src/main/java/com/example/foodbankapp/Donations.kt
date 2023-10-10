@@ -18,7 +18,6 @@ class Donations : AppCompatActivity() {
         setContentView(R.layout.activity_donations)
 
         // ******** BUTTONS POPUP MENUS ***************
-
         // >>>> MONTH MENU:
         // Obtenemos el botón para desplegar los meses:
         val btnMes = findViewById<Button>(R.id.mont_donationms)
@@ -29,27 +28,10 @@ class Donations : AppCompatActivity() {
         // Inflate the menu with the month items
         popupMenu.menuInflater.inflate(R.menu.donations_month_menu, popupMenu.menu)
 
-        // Set a listener for menu item clicks MONTHS
-        popupMenu.setOnMenuItemClickListener { menuItem: MenuItem ->
-            // Handle user selection
-            when (menuItem.itemId) {
-                R.id.enero -> {
-                    // Handle January selection
-                    return@setOnMenuItemClickListener true
-                }
-                // Add cases for the other months
-                // ...
-                else -> return@setOnMenuItemClickListener false
-            }
-        }
-
-
-
         // Set a click listener for the button to show the Popup Menu MONTHS
         btnMes.setOnClickListener { view: View ->
             popupMenu.show()
         }
-
 
         // >>>> SETTINGS MENU:
         // obtenemos el botón para el settings (...):
@@ -75,13 +57,19 @@ class Donations : AppCompatActivity() {
             }
         }
 
-
         // Set a click listener for the button to show the Popup Menu SETTINGS
         btnSettDonation.setOnClickListener { view: View ->
             settingsPopupMenu.show()
         }
 
+
         // ************ Progress bars **************
+
+        // NOTA MUY IMPORTANTE: Desarrollé el front con la idea (money, meds y food)
+        // Pero después de la última junta con Brenda (FoodBank) decidió que cambiaramos
+        // de Money --> Clothes (ropa), sin embargo tod_o lo tengo implementado con
+        // la palabra MONEY, pero para avisarles que siemore que vean money ahora es ropa
+        // SOLAMENTE en el UI si lo cambié para que en la screen diga ropa :)
 
         // >>>>>>>>> MONEY:
         // Obtener referencia al ProgressBar
@@ -130,20 +118,20 @@ class Donations : AppCompatActivity() {
 
         // función para tomar los valores de progress, goal para después mostrarlos
         fun updateProgressBars(selectedMonthData: MonthData) {
-            // Actualizar ProgressBar de Money
+            // Actualizar ProgressBar de Money (now clothes)
             progressBarMoney.progress = selectedMonthData.currentProgressMoney
-            progressTextMoney.text = "${selectedMonthData.currentProgressMoney}%"
-            goalTextMoney.text = "Objetivo: ${selectedMonthData.goalMoney}%"
+            progressTextMoney.text = "${selectedMonthData.currentProgressMoney} Pzs"
+            goalTextMoney.text = "Objetivo: ${selectedMonthData.goalMoney} Pzs"
 
             // Actualizar ProgressBar de Meds
             progressBarMeds.progress = selectedMonthData.currentProgressMeds
-            progressTextMeds.text = "${selectedMonthData.currentProgressMeds}%"
-            goalTextMeds.text = "Objetivo: ${selectedMonthData.goalMeds}%"
+            progressTextMeds.text = "${selectedMonthData.currentProgressMeds} Pzs"
+            goalTextMeds.text = "Objetivo: ${selectedMonthData.goalMeds} Pzs"
 
             // Actualizar ProgressBar de Food
             progressBarFood.progress = selectedMonthData.currentProgressFood
-            progressTextFood.text = "${selectedMonthData.currentProgressFood}%"
-            goalTextFood.text = "Objetivo: ${selectedMonthData.goalFood}%"
+            progressTextFood.text = "${selectedMonthData.currentProgressFood} Kg"
+            goalTextFood.text = "Objetivo: ${selectedMonthData.goalFood} Kg"
         }
 
         // >>>>>>> ANIMATION progress bar
@@ -166,90 +154,141 @@ class Donations : AppCompatActivity() {
             progressBar.startAnimation(animation)
         }
 
+        // obtener el text del mes para cambiar al nombre del mes seleccionado
+        val btnMesText = findViewById<TextView>(R.id.textMesDonacion)
+
         // LISTENER
         popupMenu.setOnMenuItemClickListener { menuItem: MenuItem ->
             when (menuItem.itemId) {
-                R.id.enero, R.id.febrero, R.id.marzo, R.id.abril, R.id.mayo, R.id.junio,
-                R.id.julio, R.id.agosto, R.id.septiembre, R.id.octubre, R.id.noviembre, R.id.diciembre -> {
-                    val selectedMonthData = monthData[menuItem.title.toString().toLowerCase()]
+                R.id.enero -> {
+                    val selectedMonthName = menuItem.title.toString()
+                    btnMesText.text = selectedMonthName
+                    val selectedMonthData = monthData["enero"]
                     if (selectedMonthData != null) {
                         animateProgressBar(progressBarMoney, selectedMonthData.currentProgressMoney)
                         animateProgressBar(progressBarMeds, selectedMonthData.currentProgressMeds)
                         animateProgressBar(progressBarFood, selectedMonthData.currentProgressFood)
-                    }
-                    return@setOnMenuItemClickListener true
-                }
-                R.id.enero -> {
-                    val selectedMonthData = monthData["enero"]
-                    if (selectedMonthData != null) {
                         updateProgressBars(selectedMonthData)
                     }
                     return@setOnMenuItemClickListener true
                 }R.id.febrero -> {
+                    val selectedMonthName = menuItem.title.toString()
+                    btnMesText.text = selectedMonthName
                     val selectedMonthData = monthData["febrero"]
                     if (selectedMonthData != null) {
+                        animateProgressBar(progressBarMoney, selectedMonthData.currentProgressMoney)
+                        animateProgressBar(progressBarMeds, selectedMonthData.currentProgressMeds)
+                        animateProgressBar(progressBarFood, selectedMonthData.currentProgressFood)
                         updateProgressBars(selectedMonthData)
                     }
                     return@setOnMenuItemClickListener true
                 }R.id.marzo -> {
+                    val selectedMonthName = menuItem.title.toString()
+                    btnMesText.text = selectedMonthName
                     val selectedMonthData = monthData["marzo"]
                     if (selectedMonthData != null) {
+                        animateProgressBar(progressBarMoney, selectedMonthData.currentProgressMoney)
+                        animateProgressBar(progressBarMeds, selectedMonthData.currentProgressMeds)
+                        animateProgressBar(progressBarFood, selectedMonthData.currentProgressFood)
                         updateProgressBars(selectedMonthData)
                     }
                     return@setOnMenuItemClickListener true
-                }
-                R.id.abril -> {
+                }R.id.abril -> {
+                    val selectedMonthName = menuItem.title.toString()
+                    btnMesText.text = selectedMonthName
                     val selectedMonthData = monthData["abril"]
                     if (selectedMonthData != null) {
+                        animateProgressBar(progressBarMoney, selectedMonthData.currentProgressMoney)
+                        animateProgressBar(progressBarMeds, selectedMonthData.currentProgressMeds)
+                        animateProgressBar(progressBarFood, selectedMonthData.currentProgressFood)
                         updateProgressBars(selectedMonthData)
                     }
                     return@setOnMenuItemClickListener true
                 }R.id.mayo -> {
+                    val selectedMonthName = menuItem.title.toString()
+                    btnMesText.text = selectedMonthName
                     val selectedMonthData = monthData["mayo"]
                     if (selectedMonthData != null) {
+                        animateProgressBar(progressBarMoney, selectedMonthData.currentProgressMoney)
+                        animateProgressBar(progressBarMeds, selectedMonthData.currentProgressMeds)
+                        animateProgressBar(progressBarFood, selectedMonthData.currentProgressFood)
                         updateProgressBars(selectedMonthData)
                     }
                     return@setOnMenuItemClickListener true
                 }R.id.junio -> {
+                    val selectedMonthName = menuItem.title.toString()
+                    btnMesText.text = selectedMonthName
                     val selectedMonthData = monthData["junio"]
                     if (selectedMonthData != null) {
+                        animateProgressBar(progressBarMoney, selectedMonthData.currentProgressMoney)
+                        animateProgressBar(progressBarMeds, selectedMonthData.currentProgressMeds)
+                        animateProgressBar(progressBarFood, selectedMonthData.currentProgressFood)
                         updateProgressBars(selectedMonthData)
                     }
                     return@setOnMenuItemClickListener true
                 }R.id.julio -> {
+                    val selectedMonthName = menuItem.title.toString()
+                    btnMesText.text = selectedMonthName
                     val selectedMonthData = monthData["julio"]
                     if (selectedMonthData != null) {
+                        animateProgressBar(progressBarMoney, selectedMonthData.currentProgressMoney)
+                        animateProgressBar(progressBarMeds, selectedMonthData.currentProgressMeds)
+                        animateProgressBar(progressBarFood, selectedMonthData.currentProgressFood)
                         updateProgressBars(selectedMonthData)
                     }
                     return@setOnMenuItemClickListener true
-                }
-                R.id.agosto -> {
+                }R.id.agosto -> {
+                    val selectedMonthName = menuItem.title.toString()
+                    btnMesText.text = selectedMonthName
                     val selectedMonthData = monthData["agosto"]
                     if (selectedMonthData != null) {
+                        animateProgressBar(progressBarMoney, selectedMonthData.currentProgressMoney)
+                        animateProgressBar(progressBarMeds, selectedMonthData.currentProgressMeds)
+                        animateProgressBar(progressBarFood, selectedMonthData.currentProgressFood)
                         updateProgressBars(selectedMonthData)
                     }
                     return@setOnMenuItemClickListener true
                 }R.id.septiembre -> {
+                    val selectedMonthName = menuItem.title.toString()
+                    btnMesText.text = selectedMonthName
                     val selectedMonthData = monthData["septiembre"]
                     if (selectedMonthData != null) {
+                        animateProgressBar(progressBarMoney, selectedMonthData.currentProgressMoney)
+                        animateProgressBar(progressBarMeds, selectedMonthData.currentProgressMeds)
+                        animateProgressBar(progressBarFood, selectedMonthData.currentProgressFood)
                         updateProgressBars(selectedMonthData)
                     }
                     return@setOnMenuItemClickListener true
                 }R.id.octubre -> {
+                    val selectedMonthName = menuItem.title.toString()
+                    btnMesText.text = selectedMonthName
                     val selectedMonthData = monthData["octubre"]
                     if (selectedMonthData != null) {
+                        animateProgressBar(progressBarMoney, selectedMonthData.currentProgressMoney)
+                        animateProgressBar(progressBarMeds, selectedMonthData.currentProgressMeds)
+                        animateProgressBar(progressBarFood, selectedMonthData.currentProgressFood)
                         updateProgressBars(selectedMonthData)
                     }
                     return@setOnMenuItemClickListener true
                 }R.id.noviembre -> {
+                    val selectedMonthName = menuItem.title.toString()
+                    btnMesText.text = selectedMonthName
                     val selectedMonthData = monthData["noviembre"]
                     if (selectedMonthData != null) {
+                        animateProgressBar(progressBarMoney, selectedMonthData.currentProgressMoney)
+                        animateProgressBar(progressBarMeds, selectedMonthData.currentProgressMeds)
+                        animateProgressBar(progressBarFood, selectedMonthData.currentProgressFood)
                         updateProgressBars(selectedMonthData)
                     }
                     return@setOnMenuItemClickListener true
                 }R.id.diciembre -> {
+                    val selectedMonthName = menuItem.title.toString()
+                    btnMesText.text = selectedMonthName
                     val selectedMonthData = monthData["diciembre"]
                     if (selectedMonthData != null) {
+                        animateProgressBar(progressBarMoney, selectedMonthData.currentProgressMoney)
+                        animateProgressBar(progressBarMeds, selectedMonthData.currentProgressMeds)
+                        animateProgressBar(progressBarFood, selectedMonthData.currentProgressFood)
                         updateProgressBars(selectedMonthData)
                     }
                     return@setOnMenuItemClickListener true

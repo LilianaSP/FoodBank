@@ -309,7 +309,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:fontFamily="sans-serif-medium"
-        android:text="Dinero"
+        android:text="Ropa"
         android:textColor="#33b84b"
         android:textSize="20sp"
         android:textStyle="bold"
