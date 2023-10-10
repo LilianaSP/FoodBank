@@ -1,52 +1,90 @@
 package com.example.foodbankapp
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 
-class SignUp : AppCompatActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_sign_up)
+
+    class SignUp : AppCompatActivity() {
+        lateinit var auth: FirebaseAuth
+        lateinit var db: FirebaseFirestore
+
+        override fun onCreate(savedInstanceState: Bundle?) {
+            super.onCreate(savedInstanceState)
+            setContentView(R.layout.activity_sign_up)
+
+            auth = FirebaseAuth.getInstance()
+            db = FirebaseFirestore.getInstance()
 
 
-        // Obtenemos los campos de texto que va a ingresar el usuario y los guardamos en variables
-        var backButton = findViewById<Button>(R.id.backButton)
-        // Creamos la funcionalidad del back button
-        backButton.setOnClickListener{
-            var intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
-            finish()
+
+            val registerUser = findViewById<Button>(R.id.signUpButton)
+
+            registerUser.setOnClickListener{
+                var name_input = findViewById<EditText>(R.id.first_name_input)
+                var last_name_input = findViewById<EditText>(R.id.last_name_input)
+                var job_type_input = findViewById<EditText>(R.id.job_type)
+                var email_input = findViewById<EditText>(R.id.email_Input)
+                var password_input = findViewById<EditText>(R.id.password_input)
+                //var confirm_passowrd_input = findViewById<EditText>(R.id.confirm_password)
+
+                if (checking()){
+                    val userName = name_input.text.toString()
+                    val userLname = last_name_input.text.toString()
+                    val userJob = job_type_input.text.toString()
+                    val userEmail = email_input.text.toString()
+                    val userPassword = password_input.text.toString()
+
+
+
+                    val user = hashMapOf(
+                        "NAME" to userName,
+                        "FIRST_LNAME" to userLname,
+                        "JOB_TYPE" to userJob,
+                        "EMAIL" to userEmail,
+                        "PASSWORD" to userPassword,
+                    )
+                    val userCollection = db.collection("USERS")
+                    auth.createUserWithEmailAndPassword(userEmail,userPassword)
+
+                    userCollection.document(userEmail).set(user)
+                    Toast.makeText(this, "Registered!", Toast.LENGTH_SHORT)
+                    val intent= Intent(this,Dashboard::class.java)
+                    startActivity(intent)
+                    finish()
+
+                }
+                else{
+                    Toast.makeText(this, "Verify all the spaces are filled in!", Toast.LENGTH_SHORT)
+                }
+            }
+
         }
 
-        // Definimos la variable del sign up button así como su funcionalidad de cambio de activity
-        var signUpButton = findViewById<Button>(R.id.signUpButton)
-        signUpButton.setOnClickListener{
-            var intent = Intent(this, LogInActivity::class.java)
-            startActivity(intent)
-            finish()
+        fun checking(): Boolean{
+            var userName = findViewById<EditText>(R.id.first_name_input)
+            var userLname = findViewById<EditText>(R.id.last_name_input)
+            var userJob = findViewById<EditText>(R.id.job_type)
+            var userEmail = findViewById<EditText>(R.id.email_Input)
+            var userPassword = findViewById<EditText>(R.id.password_input)
+
+            val name = userName.text.toString()
+            val lname = userLname.text.toString()
+            val job = userJob.text.toString()
+            val email = userEmail.text.toString()
+            val password = userPassword.text.toString()
+
+
+            if(name.trim{it<=' '}.isNotEmpty() && lname.trim{it<=' '}.isNotEmpty() && job.trim{it<=' '}.isNotEmpty() && email.trim{it<=' '}.isNotEmpty() && password.trim{it<=' '}.isNotEmpty()){
+                return true
+            }
+            return false
         }
-
-
-        // Definomos las variables en las cuales se va a almacenar la información de la base datos
-        var name_input = findViewById<EditText>(R.id.first_name_input)
-        var last_name_input = findViewById<EditText>(R.id.last_name_input)
-        var job_type_input = findViewById<EditText>(R.id.job_type)
-        var email_input = findViewById<EditText>(R.id.email_Input)
-        var password_input = findViewById<EditText>(R.id.password_input)
-        var confirm_passowrd_input = findViewById<EditText>(R.id.confirm_password)
-
-        // Estas son las variables que van a utilizar para la base de datos, ya que aquí ya se pasan a strings
-        val name = name_input.text.toString()
-        val lastName = last_name_input.textScaleX.toString()
-        val jobType = job_type_input.text.toString()
-        val email = email_input.text.toString()
-        val password = password_input.text.toString()
-        val confirmPassword = confirm_passowrd_input.text.toString()
-
 
 
     }
-}
