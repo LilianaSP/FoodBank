@@ -59,8 +59,7 @@
         app:layout_constraintHorizontal_bias="0.506"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView3"
-        app:layout_constraintVertical_bias="0.068"
-    />
+        app:layout_constraintVertical_bias="0.04" />
 
     <TextView
         android:id="@+id/textUploadPic"
@@ -77,6 +76,7 @@
         app:layout_constraintTop_toTopOf="@+id/btnUploadPic"
         app:layout_constraintVertical_bias="0.0" />
 
+
     <ImageView
         android:id="@+id/uploadPicIcon"
         android:layout_width="25dp"
@@ -87,19 +87,19 @@
         app:layout_constraintStart_toStartOf="@+id/btnUploadPic"
         app:layout_constraintTop_toTopOf="@+id/btnUploadPic"
         app:layout_constraintVertical_bias="0.375"
-        app:srcCompat="@drawable/upload_pic"
-    />
+        app:srcCompat="@drawable/upload_pic" />
 
     <ScrollView
+        android:id="@+id/scrollView3"
         android:layout_width="300dp"
         android:layout_height="match_parent"
         android:layout_marginTop="316dp"
         app:layout_constraintBottom_toBottomOf="@+id/btnUploadPic"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintHorizontal_bias="0.486"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnUploadPic"
-        app:layout_constraintVertical_bias="0.291">
+        app:layout_constraintVertical_bias="0.151">
 
         <EditText
             android:id="@+id/editTextDescription"
@@ -107,7 +107,7 @@
             android:layout_height="wrap_content"
             android:hint="Descripción del post..."
             android:inputType="textMultiLine"
-            android:lines="5"
+            android:lines="3"
             android:scrollbars="vertical" />
     </ScrollView>
 
@@ -182,7 +182,7 @@
     />
 
     <ImageView
-        android:id="@+id/imageView9"
+        android:id="@+id/facebookIcon"
         android:layout_width="42dp"
         android:layout_height="47dp"
         app:layout_constraintBottom_toBottomOf="@+id/btnShare"
@@ -192,5 +192,17 @@
         app:layout_constraintTop_toTopOf="@+id/btnShare"
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/facebook" />
+
+    <ImageView
+        android:id="@+id/imageToUpload"
+        android:layout_width="133dp"
+        android:layout_height="139dp"
+        app:layout_constraintBottom_toTopOf="@+id/imageView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnUploadPic"
+        app:layout_constraintVertical_bias="0.038"
+        app:srcCompat="@drawable/image_icon"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
