@@ -339,7 +339,7 @@
         app:layout_constraintStart_toEndOf="@+id/textViewDonationMoney"
         app:layout_constraintTop_toBottomOf="@+id/mont_donationms"
         app:layout_constraintVertical_bias="1.0"
-        app:srcCompat="@drawable/if_progress_completed" />
+        app:srcCompat="@drawable/check" />
 
     <ImageView
         android:id="@+id/medsEmoji"
@@ -352,7 +352,7 @@
         app:layout_constraintStart_toEndOf="@+id/textViewDonationMeds"
         app:layout_constraintTop_toBottomOf="@+id/progressBarMoney"
         app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/if_progress_completed" />
+        app:srcCompat="@drawable/check" />
 
     <ImageView
         android:id="@+id/foodEmoji"
@@ -366,7 +366,7 @@
         app:layout_constraintStart_toEndOf="@+id/textViewDonationFood"
         app:layout_constraintTop_toBottomOf="@+id/progressBarMeds"
         app:layout_constraintVertical_bias="1.0"
-        app:srcCompat="@drawable/if_progress_completed" />
+        app:srcCompat="@drawable/check" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
