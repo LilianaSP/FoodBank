@@ -20,9 +20,8 @@
         android:theme="@style/Theme.FoodBankApp"
         tools:targetApi="31">
         <activity
-            android:name=".DonationStatus"
-            android:exported="false"
-            android:windowSoftInputMode="adjustPan"/>
+            android:name=".EditProfile"
+            android:exported="false" />
         <activity
             android:name=".New_password_input"
             android:exported="false" />
