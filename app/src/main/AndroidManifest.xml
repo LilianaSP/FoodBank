@@ -33,7 +33,8 @@
             android:exported="false" />
         <activity
             android:name=".CreatingPost"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan"/>
         <activity
             android:name=".Donations"
             android:exported="false" />
@@ -42,13 +43,15 @@
             android:exported="false" />
         <activity
             android:name=".RegisterDonation"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan"/>
         <activity
             android:name=".Dashboard"
             android:exported="false" />
         <activity
             android:name=".SignUp"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan"/>
         <activity
             android:name=".LoggedInActivity"
             android:exported="false" />
