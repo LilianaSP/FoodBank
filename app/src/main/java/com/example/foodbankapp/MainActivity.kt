@@ -17,12 +17,15 @@ class MainActivity : AppCompatActivity() {
 
         // Creamos el cambio de activity para la activity_log_in
         loginButton.setOnClickListener{
-            var intent = Intent(this, LogInActivity::class.java)
+            var intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
             finish()
         }
 
         signupButton.setOnClickListener{
+
+            var intent = Intent(this, EditProfile::class.java)
+
 
             var intent = Intent(this, LoggedInActivity::class.java)
 
