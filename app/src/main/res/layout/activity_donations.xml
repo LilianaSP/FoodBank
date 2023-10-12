@@ -156,7 +156,7 @@
         android:layout_gravity="center"
         android:layout_marginTop="45dp"
         android:max="100"
-        android:progress="80"
+        android:progress="0"
         android:progressDrawable="@drawable/progress_bar_food"
         app:layout_constraintBottom_toTopOf="@+id/imageView"
         app:layout_constraintEnd_toEndOf="@+id/progressBarMoney"
@@ -202,7 +202,7 @@
         android:layout_gravity="center"
         android:layout_marginTop="45dp"
         android:max="100"
-        android:progress="30"
+        android:progress="0"
         android:progressDrawable="@drawable/progress_bar_meds"
         app:layout_constraintBottom_toTopOf="@+id/imageView"
         app:layout_constraintEnd_toEndOf="@+id/progressBarMoney"
@@ -221,7 +221,7 @@
         android:layout_marginTop="74dp"
         android:layout_marginBottom="268dp"
         android:max="100"
-        android:progress="60"
+        android:progress="0"
         android:progressDrawable="@drawable/progress_bar_money"
         app:layout_constraintBottom_toTopOf="@+id/imageView"
         app:layout_constraintEnd_toEndOf="parent"
@@ -309,7 +309,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:fontFamily="sans-serif-medium"
-        android:text="Dinero"
+        android:text="Ropa"
         android:textColor="#33b84b"
         android:textSize="20sp"
         android:textStyle="bold"
@@ -331,6 +331,45 @@
         app:layout_constraintBottom_toTopOf="@+id/progressBarMoney"
         app:layout_constraintEnd_toEndOf="@+id/progressBarMoney"
         tools:ignore="MissingConstraints" />
+
+    <ImageView
+        android:id="@+id/moneyEmoji"
+        android:layout_width="56dp"
+        android:layout_height="50dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/progressBarMoney"
+        app:layout_constraintEnd_toStartOf="@+id/textViewMoney"
+        app:layout_constraintStart_toEndOf="@+id/textViewDonationMoney"
+        app:layout_constraintTop_toBottomOf="@+id/mont_donationms"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/if_progress_completed" />
+
+    <ImageView
+        android:id="@+id/medsEmoji"
+        android:layout_width="56dp"
+        android:layout_height="50dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/progressBarMeds"
+        app:layout_constraintEnd_toStartOf="@+id/textViewMeds"
+        app:layout_constraintHorizontal_bias="0.657"
+        app:layout_constraintStart_toEndOf="@+id/textViewDonationMeds"
+        app:layout_constraintTop_toBottomOf="@+id/progressBarMoney"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/if_progress_completed" />
+
+    <ImageView
+        android:id="@+id/foodEmoji"
+        android:layout_width="56dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="6dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/progressBarFood"
+        app:layout_constraintEnd_toStartOf="@+id/textViewFood"
+        app:layout_constraintHorizontal_bias="0.568"
+        app:layout_constraintStart_toEndOf="@+id/textViewDonationFood"
+        app:layout_constraintTop_toBottomOf="@+id/progressBarMeds"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/if_progress_completed" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

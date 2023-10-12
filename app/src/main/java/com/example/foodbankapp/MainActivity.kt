@@ -23,7 +23,11 @@ class MainActivity : AppCompatActivity() {
         }
 
         signupButton.setOnClickListener{
+
             var intent = Intent(this, LoggedInActivity::class.java)
+
+            var intent = Intent(this, CreatingPost::class.java)
+
             startActivity(intent)
             finish()
         }
