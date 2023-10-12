@@ -55,6 +55,9 @@ class Donations : AppCompatActivity() {
 
         mainPage.setOnClickListener {
             // Realiza las acciones necesarias
+            var intent = Intent(this, LoggedInActivity::class.java)
+            startActivity(intent)
+            finish()
             dialog.dismiss()
         }
 
@@ -189,7 +192,7 @@ class Donations : AppCompatActivity() {
 
             if (progressBar.progress >= goal) {
                 emojiImageView.visibility = View.VISIBLE // Mostrar el emoji si se alcanza el objetivo
-                emojiImageView.setImageResource(R.drawable.if_progress_completed) // Cambia el emoji de éxito
+                emojiImageView.setImageResource(R.drawable.check) // Cambia el emoji de éxito
             } else {
                 emojiImageView.visibility = View.INVISIBLE // Ocultar el emoji si no se alcanza el objetivo
             }
