@@ -9,27 +9,30 @@
 
 
     <ImageView
-        android:id="@+id/PasswordEditProfile"
-        android:layout_width="413dp"
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
         android:layout_height="82dp"
+        android:background="@drawable/background_with_border_bottom"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.008"
-        app:srcCompat="@drawable/redframe" />
+    />
 
     <ImageView
         android:id="@+id/imageView8"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="match_parent"
+        android:layout_height="82dp"
         android:layout_marginBottom="19dp"
         app:layout_constraintBottom_toTopOf="@+id/ImageEditProfile"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/redframe" />
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/upperredframe" />
 
     <TextView
         android:id="@+id/textView22"
@@ -37,16 +40,16 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="280dp"
         android:fontFamily="sans-serif-medium"
-        android:text="Nombre"
+        android:text="Nombre:"
         android:textColor="#000000"
-        android:textSize="30sp"
+        android:textSize="26sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.092"
+        app:layout_constraintHorizontal_bias="0.093"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.773" />
+        app:layout_constraintTop_toBottomOf="@+id/EditButton"
+        app:layout_constraintVertical_bias="0.26" />
 
     <TextView
         android:id="@+id/textView23"
@@ -54,70 +57,46 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="184dp"
         android:fontFamily="sans-serif-medium"
-        android:text="Apellidos"
+        android:text="Apellidos:"
         android:textColor="#000000"
-        android:textSize="30sp"
+        android:textSize="26sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.098"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.792" />
+        app:layout_constraintTop_toBottomOf="@+id/NameEditProfile"
+        app:layout_constraintVertical_bias="0.127" />
 
     <TextView
         android:id="@+id/LastNameEditProfile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="/*Apellidos"
-        android:textSize="25dp"
+        android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.097"
+        app:layout_constraintHorizontal_bias="0.096"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.635" />
+        app:layout_constraintTop_toBottomOf="@+id/textView23"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/textView24"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="200dp"
+        android:layout_marginBottom="184dp"
         android:fontFamily="sans-serif-medium"
-        android:text="Correo"
+        android:text="Correo:"
         android:textColor="#000000"
-        android:textSize="30sp"
+        android:textSize="26sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.088"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/EmailEditProfile"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="ejemplo@gmail.com"
-        android:textSize="25dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.154"
+        app:layout_constraintHorizontal_bias="0.092"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.76" />
-
-    <TextView
-        android:id="@+id/textView21"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="************"
-        android:textSize="25dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.091"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.888" />
+        app:layout_constraintTop_toBottomOf="@+id/LastNameEditProfile"
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/textView17"
@@ -125,29 +104,42 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="112dp"
         android:fontFamily="sans-serif-medium"
-        android:text="Contraseña"
+        android:text="Contraseña:"
         android:textColor="#000000"
-        android:textSize="30sp"
+        android:textSize="26sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.101"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.111"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/EmailEditProfile"
+        app:layout_constraintVertical_bias="1.0" />
 
-    <Button
-        android:id="@+id/EditButton"
-        android:layout_width="176dp"
-        android:layout_height="55dp"
-        android:foreground="@drawable/green_button_cutom_input"
-        android:foregroundTint="#3698F3"
-        android:text="Editar"
-        android:textSize="20sp"
-        app:icon="@android:drawable/ic_menu_edit"
+    <TextView
+        android:id="@+id/textView21"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="************"
+        android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.098"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.377" />
+        app:layout_constraintTop_toBottomOf="@+id/textView17"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/EmailEditProfile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ejemplo@gmail.com"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.128"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView24"
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/EditPasswordButton"
@@ -155,12 +147,13 @@
         android:layout_height="37dp"
         android:foreground="@drawable/green_button_cutom_input"
         android:foregroundTint="#3697F2"
+        android:text="Editar foto"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.579"
+        app:layout_constraintHorizontal_bias="0.722"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.834" />
+        app:layout_constraintTop_toBottomOf="@+id/ImageEditProfile"
+        app:layout_constraintVertical_bias="0.755" />
 
     <Button
         android:id="@+id/DashboardButton"
@@ -182,27 +175,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="/Nombre Completo"
-        android:textSize="25dp"
+        android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.143"
+        app:layout_constraintHorizontal_bias="0.121"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.513" />
-
-    <Button
-        android:id="@+id/button"
-        android:layout_width="172dp"
-        android:layout_height="165dp"
-        android:foreground="@drawable/green_button_cutom_input"
-        android:foregroundTint="#DC0E2A"
-        android:text="Button"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.137" />
+        app:layout_constraintTop_toBottomOf="@+id/textView22"
+        app:layout_constraintVertical_bias="0.0" />
 
     <ImageView
         android:id="@+id/ImageEditProfile"
@@ -213,17 +192,35 @@
         app:layout_constraintStart_toStartOf="@+id/button"
         app:layout_constraintTop_toTopOf="@+id/button" />
 
-    <TextView
-        android:id="@+id/textView31"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:drawableTint="#EADFDF"
-        android:textColor="#fff"
-        android:textSize="20dp"
-        app:layout_constraintBottom_toBottomOf="@+id/EditButton"
-        app:layout_constraintEnd_toEndOf="@+id/EditButton"
-        app:layout_constraintStart_toStartOf="@+id/EditButton"
-        app:layout_constraintTop_toTopOf="@+id/EditButton" />
+    <Button
+        android:id="@+id/button"
+        android:layout_width="172dp"
+        android:layout_height="165dp"
+        android:foreground="@drawable/green_button_cutom_input"
+        android:foregroundTint="#DC0E2A"
+        android:text="Button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.489"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/DashboardButton"
+        app:layout_constraintVertical_bias="0.061" />
+
+    <Button
+        android:id="@+id/EditButton"
+        android:layout_width="176dp"
+        android:layout_height="55dp"
+        android:foreground="@drawable/green_button_cutom_input"
+        android:foregroundTint="#3698F3"
+        android:text="Editar"
+        android:textSize="20sp"
+        app:icon="@android:drawable/ic_menu_edit"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button"
+        app:layout_constraintVertical_bias="0.024" />
 
     <TextView
         android:id="@+id/textView32"
@@ -238,7 +235,19 @@
         app:layout_constraintEnd_toEndOf="@+id/EditButton"
         app:layout_constraintStart_toStartOf="@+id/EditButton"
         app:layout_constraintTop_toTopOf="@+id/EditButton"
-        app:layout_constraintVertical_bias="0.625" />
+        app:layout_constraintVertical_bias="0.26" />
+
+    <TextView
+        android:id="@+id/textView31"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableTint="#EADFDF"
+        android:textColor="#fff"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="@+id/EditButton"
+        app:layout_constraintEnd_toEndOf="@+id/EditButton"
+        app:layout_constraintStart_toStartOf="@+id/EditButton"
+        app:layout_constraintTop_toTopOf="@+id/EditButton" />
 
     <TextView
         android:id="@+id/textView34"
