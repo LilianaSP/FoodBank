@@ -56,6 +56,9 @@ class Donations : AppCompatActivity() {
 
         mainPage.setOnClickListener {
             // Realiza las acciones necesarias
+            var intent = Intent(this, LoggedInActivity::class.java)
+            startActivity(intent)
+            finish()
             dialog.dismiss()
         }
 
