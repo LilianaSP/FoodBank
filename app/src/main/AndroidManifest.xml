@@ -19,18 +19,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FoodBankApp"
         tools:targetApi="31">
-        <activity
-            android:name=".EditProfile"
-            android:exported="false" />
-        <activity
-            android:name=".New_password_input"
-            android:exported="false" />
-        <activity
-            android:name=".ResetPassword"
-            android:exported="false" />
+
         <activity
             android:name=".HistorialDonations"
             android:exported="false" />
+
+        <activity
+            android:name=".DonationStatus"
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan"/>
         <activity
             android:name=".CreatingPost"
             android:exported="false"
