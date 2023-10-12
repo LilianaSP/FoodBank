@@ -131,16 +131,16 @@
 
     <Button
         android:id="@+id/dashButton"
-        android:layout_width="397dp"
-        android:layout_height="89dp"
-        android:layout_marginEnd="12dp"
+        android:layout_width="match_parent"
+        android:layout_height="82dp"
         android:background="@drawable/mainmenubutton"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.071"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/miPerfil4"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="1.0"
+    />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
