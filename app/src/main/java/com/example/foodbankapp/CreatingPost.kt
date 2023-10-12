@@ -236,6 +236,8 @@ class CreatingPost : AppCompatActivity() {
     // FUNCIÓN PARA COMPARTIR POST A FACEBOOK:
     private fun showShareConfirmationDialog() {
 
+        // VARIABLES PARA BACK (SAM, ANA) AQUÍ SE GUARDA LO QUE EL USUSARIO PONGA DE
+        // DESCRIPCIÓN Y LA FOTO:
         val editTextDescription = findViewById<TextView>(R.id.editTextDescription)
         val imageToUpload = findViewById<ImageView>(R.id.imageToUpload)
 
@@ -244,14 +246,14 @@ class CreatingPost : AppCompatActivity() {
         alertDialog.setMessage("¿Deseas compartir este post en Facebook?")
 
         alertDialog.setPositiveButton("Sí") { _, _ ->
-            // Aquí puedes agregar la lógica para compartir en Facebook
+            // Aquí puedes agregar la lógica para compartir en Facebook BACKEND!!
             editTextDescription.text = null  // Borrar el texto
             imageToUpload.setImageResource(R.drawable.image_icon) // Configurar la imagen predeterminada
             showToast("El post se ha compartido exitosamente en Facebook.")
         }
 
         alertDialog.setNegativeButton("No") { _, _ ->
-            // Aquí puedes agregar la lógica para eliminar el post
+            // Aquí puedes agregar la lógica para eliminar el post BACKEND!!
 
             editTextDescription.text = null  // Borrar el texto
             imageToUpload.setImageResource(R.drawable.image_icon) // Configurar la imagen predeterminada
