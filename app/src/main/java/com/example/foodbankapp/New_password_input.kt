@@ -6,11 +6,18 @@ import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.text.Editable
+import android.text.InputType
 import android.text.TextWatcher
+import android.view.Gravity
+import android.view.LayoutInflater
+import android.view.View
 import android.widget.Button
 import android.widget.EditText
+import android.widget.FrameLayout
+import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 
 class New_password_input : AppCompatActivity() {
@@ -22,9 +29,16 @@ class New_password_input : AppCompatActivity() {
     private lateinit var mayusMinCondition: TextView
     private lateinit var specialCharCondition: TextView
     private lateinit var containsNumCondition: TextView
+    private lateinit var backButton : Button
 
     val lightGreenColor = Color.parseColor("#06CB52")
     val defaultColor = Color.parseColor("#FA3C1B")
+
+    //Variables para el toggle de la contraseña
+    private lateinit var togglePasswordButton: ImageButton
+    private lateinit var togglePasswordButton2: ImageButton
+    private var isPasswordVisible = false
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,6 +51,63 @@ class New_password_input : AppCompatActivity() {
         mayusMinCondition = findViewById(R.id.condition2)
         specialCharCondition = findViewById(R.id.condition3)
         containsNumCondition = findViewById(R.id.condition4)
+        backButton = findViewById(R.id.backButton2)
+
+        // variabe del botón de confirmar contraseña
+        val inflater = LayoutInflater.from(this)
+        val popUpView = inflater.inflate(R.layout.pop_up_confirm_password,null)
+        val confirmPasswordButton = popUpView.findViewById<Button>(R.id.confirmPasswordButton)
+
+        confirmPasswordButton.setOnClickListener{
+            val intent = Intent(this, LogInActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+
+
+        // Función de backButton
+        backButton.setOnClickListener{
+            val intent = Intent(this, LogInActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+
+
+        // Apartado de la visibilidad de la nueva contraseña
+        togglePasswordButton = findViewById(R.id.passwordToggle)
+        //Función del toggle de la contraseña
+        togglePasswordButton.setOnClickListener {
+            togglePasswordVisibility()
+        }
+
+        // apartado de visibildiad de confirmar contraseña
+        togglePasswordButton2 = findViewById(R.id.passwordToggle2)
+        togglePasswordButton2.setOnClickListener {
+            togglePasswordVisibility2()
+        }
+
+        // Función para cambiar de activity de al hacer click en el botón de confirmar la cnotraseña
+        confirmPasswordButton.setOnClickListener {
+            var intent = Intent(this, LogInActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+
+
+        // Configura un TextWatcher para la confirmación de contraseña
+        confirmPasswordInput.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable?) {
+                validatePassword()
+            }
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+                // No es necesario implementar
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                // No es necesario implementar
+            }
+        })
 
         passwordInput.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
@@ -52,22 +123,87 @@ class New_password_input : AppCompatActivity() {
             }
         })
 
-        val resetPasswordButton = findViewById<Button>(R.id.reestablacerPasswordButton)
+        val resetPasswordButton = findViewById<Button>(R.id.MiPerfil)
 
         resetPasswordButton.setOnClickListener {
             val password = passwordInput.text.toString()
             val confirmPassword = confirmPasswordInput.text.toString()
 
             if (isPasswordValid(password, confirmPassword)) {
-                Toast.makeText(this, "Contraseña restablecida", Toast.LENGTH_SHORT).show()
-                val intent = Intent(this, LogInActivity::class.java)
-                startActivity(intent)
-                finish()
+                // modificar el background de acuerdo con el popup
+                val backgroundSemiTransparent = findViewById<FrameLayout>(R.id.background_dim)
+
+                // Configurar la visiblidad del background
+                backgroundSemiTransparent.visibility = View.VISIBLE
+
+                // Creamos la funcionalidad del custom pop up
+                val view = View.inflate(this@New_password_input, R.layout.pop_up_confirm_password, null)
+                val builder = AlertDialog.Builder(this@New_password_input)
+                builder.setView(view)
+
+                val dialog = builder.create()
+                // Función para cuando se cierra el pop up regresar al fondo normal
+                dialog.setOnDismissListener{
+                    backgroundSemiTransparent.visibility = View.INVISIBLE
+                }
+
+                val window = dialog.window
+                val layoutParams = window?.attributes
+                layoutParams?.gravity = Gravity.CENTER
+
+                dialog.show()
+
+
             } else {
                 Toast.makeText(this, "Revisa los datos", Toast.LENGTH_SHORT).show()
             }
         }
+
+
+
+
     }
+
+    //Función del toggle de la contraseña
+    private fun togglePasswordVisibility(){
+        isPasswordVisible = !isPasswordVisible
+
+        //Se cambia el icono
+        if(isPasswordVisible){
+            togglePasswordButton.setBackgroundResource(R.drawable.open_eye) // Cambiar el icono al ojo abierto campo de texto nueva contraseña
+            passwordInput.inputType = InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
+        }
+        else{
+            togglePasswordButton.setBackgroundResource(R.drawable.closedeye) // Cambiar el icono al ojo cerrado campo de texto nueva contraseña
+            passwordInput.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
+        }
+
+        //mover el cursor al final del texto
+        val textLenght = passwordInput.text.length
+        passwordInput.setSelection(textLenght)
+
+    }
+
+    private fun togglePasswordVisibility2(){
+        isPasswordVisible = !isPasswordVisible
+
+        //Se cambia el icono
+        if(isPasswordVisible){
+            togglePasswordButton2.setBackgroundResource(R.drawable.open_eye) // Cambiar el icono al ojo abierto campo de texto confirmar contraseña
+            confirmPasswordInput.inputType = InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
+        }
+        else{
+            togglePasswordButton2.setBackgroundResource(R.drawable.closedeye) // Cambiar el icono al ojo cerrado campo de texto confirmar contraseña
+            confirmPasswordInput.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
+        }
+
+        //mover el cursor al final del texto
+        val textLenght2 = confirmPasswordInput.text.length
+        confirmPasswordInput.setSelection(textLenght2)
+
+    }
+
+
 
     fun isPasswordValid(password: String, confirmPassword: String): Boolean {
         val isValidLength = password.length >= 8

@@ -6,28 +6,141 @@
     android:layout_height="match_parent"
     tools:context=".LoggedInActivity">
 
+    <!-- Agrega un FrameLayout como fondo de toda la actividad -->
+    <FrameLayout
+        android:id="@+id/background_dim"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#80000000"
+        android:visibility="invisible"
+        android:elevation="50dp">
+    </FrameLayout>
+
     <ImageView
         android:id="@+id/imageView3"
         android:layout_width="410dp"
         android:layout_height="82dp"
-        app:layout_constraintBottom_toTopOf="@+id/imageView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/upperredframe" />
 
+    <Button
+        android:id="@+id/MiPerfil"
+        android:layout_width="331dp"
+        android:layout_height="51dp"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="164dp"
+        android:backgroundTint="@color/lightGreen"
+        android:fontFamily="sans-serif-black"
+        android:text="Mi Perfil"
+        android:textColorLink="@color/lightGreen"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        app:cornerRadius="14dp"
+        app:layout_constraintBottom_toTopOf="@+id/HistoryDonationsButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView3"
+        app:layout_constraintVertical_bias="0.79" />
+
     <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="413dp"
-        android:layout_height="82dp"
+        android:id="@+id/imageView22"
+        android:layout_width="182dp"
+        android:layout_height="2dp"
+        app:layout_constraintBottom_toTopOf="@+id/MiPerfil"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView3"
+        app:layout_constraintVertical_bias="0.927"
+        app:srcCompat="@drawable/line"
+        app:tint="#424242" />
+
+    <Button
+        android:id="@+id/donacionesButton"
+        android:layout_width="331dp"
+        android:layout_height="51dp"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="400dp"
+        android:backgroundTint="@color/lightBlue"
+        android:fontFamily="sans-serif-black"
+        android:text="Donaciones"
+        android:textColorHighlight="@color/lightGreen"
+        android:textColorLink="@color/lightGreen"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        app:cornerRadius="14dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+
+    <Button
+        android:id="@+id/miPerfil4"
+        android:layout_width="331dp"
+        android:layout_height="51dp"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="28dp"
+        android:backgroundTint="@color/purple"
+        android:fontFamily="sans-serif-black"
+        android:text="Crear publicación"
+        android:textColorHighlight="@color/lightGreen"
+        android:textColorLink="@color/lightGreen"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        app:cornerRadius="14dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/donacionesButton" />
+
+    <Button
+        android:id="@+id/HistoryDonationsButton"
+        android:layout_width="331dp"
+        android:layout_height="51dp"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="232dp"
+        android:backgroundTint="@color/orange"
+        android:fontFamily="sans-serif-black"
+        android:text="Historial de donaciones"
+        android:textColorHighlight="@color/lightGreen"
+        android:textColorLink="@color/lightGreen"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        app:cornerRadius="14dp"
+        app:layout_constraintBottom_toTopOf="@+id/donacionesButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView3"
+        app:layout_constraintVertical_bias="0.794" />
+
+
+    <TextView
+        android:id="@+id/textView21"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="¿Cómo te podemos ayudar?"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/imageView22"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView3"
+        app:layout_constraintVertical_bias="0.924" />
+
+    <Button
+        android:id="@+id/dashButton"
+        android:layout_width="397dp"
+        android:layout_height="89dp"
+        android:layout_marginEnd="12dp"
+        android:background="@drawable/mainmenubutton"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.071"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.008"
-        app:srcCompat="@drawable/redframe" />
+        app:layout_constraintTop_toBottomOf="@+id/miPerfil4"
+        app:layout_constraintVertical_bias="1.0" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
