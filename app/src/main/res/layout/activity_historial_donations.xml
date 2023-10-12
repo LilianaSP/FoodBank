@@ -6,6 +6,48 @@
     android:layout_height="match_parent"
     tools:context=".HistorialDonations">
 
+    <ImageView
+        android:id="@+id/imageView28"
+        android:layout_width="339dp"
+        android:layout_height="529dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView25"
+        app:layout_constraintVertical_bias="0.185"
+        app:srcCompat="@drawable/custom_input"
+        app:tint="#EDECEC" />
+
+    <ImageView
+        android:id="@+id/imageView25"
+        android:layout_width="410dp"
+        android:layout_height="82dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/upperredframe" />
+
+
+    <Button
+        android:id="@+id/backButton4"
+        android:layout_width="139dp"
+        android:layout_height="49dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="8dp"
+        android:backgroundTint="@color/lightGreen"
+        android:elevation="8dp"
+        android:fontFamily="sans-serif-black"
+        android:text="Regresar"
+        android:textSize="21sp"
+        android:textStyle="bold"
+        app:cornerRadius="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.073"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/dashButton3"
@@ -21,145 +63,48 @@
         app:layout_constraintVertical_bias="1.0" />
 
     <ImageView
-        android:id="@+id/imageView26"
+        android:id="@+id/imageView36"
         android:layout_width="182dp"
         android:layout_height="2dp"
+        android:layout_marginBottom="200dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.521"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView25"
+        app:layout_constraintVertical_bias="0.108"
         app:srcCompat="@drawable/line"
-        app:tint="#424242"
-        tools:layout_editor_absoluteX="114dp"
-        tools:layout_editor_absoluteY="157dp" />
+        app:tint="#424242" />
 
     <TextView
         android:id="@+id/textView25"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:elevation="50dp"
         android:text="Historial de donaciones"
         android:textAlignment="center"
         android:textSize="24sp"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="78dp"
-        tools:layout_editor_absoluteY="112dp" />
-
-    <TextView
-        android:id="@+id/textView26"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="50dp"
-        android:elevation="12dp"
-        android:text="Folio:"
-        android:textAlignment="center"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/miPerfil"
-        app:layout_constraintEnd_toStartOf="@+id/NumFolio"
-        app:layout_constraintStart_toStartOf="@+id/imageView29"
-        app:layout_constraintTop_toTopOf="@+id/imageView29"
-        app:layout_constraintVertical_bias="0.196" />
-
-    <TextView
-        android:id="@+id/idstatus"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="43dp"
-        android:elevation="12dp"
-        android:text="#status"
-        android:textAlignment="center"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/miPerfil2"
-        app:layout_constraintEnd_toEndOf="@+id/imageView29"
-        app:layout_constraintHorizontal_bias="0.812"
-        app:layout_constraintStart_toStartOf="@+id/imageView29"
-        app:layout_constraintTop_toTopOf="@+id/imageView29"
-        app:layout_constraintVertical_bias="1.0" />
-
-    <TextView
-        android:id="@+id/NumFolio"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:elevation="12dp"
-        android:text="#Folio"
-        android:textAlignment="center"
-        android:textColor="@color/red"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView29"
-        app:layout_constraintEnd_toEndOf="@+id/imageView29"
-        app:layout_constraintHorizontal_bias="0.274"
-        app:layout_constraintStart_toStartOf="@+id/imageView29"
-        app:layout_constraintTop_toTopOf="@+id/imageView29"
-        app:layout_constraintVertical_bias="0.118" />
-
-    <ImageView
-        android:id="@+id/imageView25"
-        android:layout_width="410dp"
-        android:layout_height="82dp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView36"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/upperredframe" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView25" />
 
-    <ImageView
-        android:id="@+id/imageView28"
+    <ScrollView
+        android:id="@+id/scrollViewItems"
         android:layout_width="343dp"
-        android:layout_height="506dp"
-        app:srcCompat="@drawable/custom_input"
-        app:tint="#EDECEC"
-        tools:layout_editor_absoluteX="24dp"
-        tools:layout_editor_absoluteY="176dp" />
-
-    <ImageView
-        android:id="@+id/imageView29"
-        android:layout_width="311dp"
-        android:layout_height="148dp"
+        android:layout_height="504dp"
         app:layout_constraintBottom_toBottomOf="@+id/imageView28"
         app:layout_constraintEnd_toEndOf="@+id/imageView28"
-        app:layout_constraintHorizontal_bias="0.531"
         app:layout_constraintStart_toStartOf="@+id/imageView28"
-        app:layout_constraintTop_toTopOf="@+id/imageView28"
-        app:layout_constraintVertical_bias="0.025"
-        app:srcCompat="@drawable/custom_input"
-        app:tint="#D1D1D1" />
+        app:layout_constraintTop_toTopOf="@+id/imageView28">
 
-    <Button
-        android:id="@+id/miPerfil"
-        android:layout_width="111dp"
-        android:layout_height="43dp"
-        android:layout_centerInParent="true"
-        android:backgroundTint="@color/orange"
-        android:fontFamily="sans-serif-black"
-        android:text="Folio"
-        android:textColorHighlight="@color/lightGreen"
-        android:textColorLink="@color/lightGreen"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:cornerRadius="10dp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView29"
-        app:layout_constraintEnd_toStartOf="@+id/miPerfil2"
-        app:layout_constraintHorizontal_bias="0.544"
-        app:layout_constraintStart_toStartOf="@+id/imageView29"
-        app:layout_constraintTop_toTopOf="@+id/imageView29"
-        app:layout_constraintVertical_bias="1.0" />
+        <LinearLayout
+            android:id="@+id/linearLayoutInScrollView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+    </ScrollView>
 
-    <Button
-        android:id="@+id/miPerfil2"
-        android:layout_width="111dp"
-        android:layout_height="43dp"
-        android:layout_centerInParent="true"
-        android:backgroundTint="@color/lightGreen"
-        android:fontFamily="sans-serif-black"
-        android:text="Asignar"
-        android:textColorHighlight="@color/lightGreen"
-        android:textColorLink="@color/lightGreen"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:cornerRadius="10dp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView29"
-        app:layout_constraintEnd_toEndOf="@+id/imageView29"
-        app:layout_constraintHorizontal_bias="0.895"
-        app:layout_constraintStart_toStartOf="@+id/imageView29"
-        app:layout_constraintTop_toTopOf="@+id/imageView29"
-        app:layout_constraintVertical_bias="1.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
