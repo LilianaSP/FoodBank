@@ -39,6 +39,8 @@ class LoggedInActivity : AppCompatActivity() {
             val settingButton = view.findViewById<Button>(R.id.ConfigButton)
 
             mainPage.setOnClickListener {
+                val intent = Intent(this, LoggedInActivity::class.java)
+                startActivity(intent)
                 dialog.dismiss() // Cerrar el menú emergente porque esta es el main page
             }
 
