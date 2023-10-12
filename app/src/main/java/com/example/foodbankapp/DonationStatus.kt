@@ -1,16 +1,47 @@
 package com.example.foodbankapp
 
 import android.app.Dialog
+import android.content.Context
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.widget.Button
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 
 class DonationStatus : AppCompatActivity() {
 
+    private var estadoSeleccionado: String = ""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_donation_status)
+
+        val backButton = findViewById<Button>(R.id.backButton5)
+        backButton.setOnClickListener {
+            // Recupera el valor actualizado del botón statusButton
+            val updatedStatus = (findViewById<Button>(R.id.statusButton)).text.toString()
+            var intent = Intent(this, HistorialDonations::class.java)
+            // Pasa el valor actualizado como extra
+            intent.putExtra("updatedStatus", updatedStatus)
+            // También pasa el número de folio y el estado de la donación de regreso a HistorialDonations
+            intent.putExtra("numFolio", intent.getStringExtra("numFolio"))
+            intent.putExtra("idStatus", intent.getStringExtra("idStatus"))
+            startActivity(intent)
+            finish()
+        }
+
+
+        // Jala el numFolio desde la activity HistorialDonations
+        // Recupera el valor de numFolio pasado como extra
+        val numFolio = intent.getStringExtra("numFolio")
+
+        // Encuentra el elemento con el ID idFolio en la vista
+        val idFolioTextView = findViewById<TextView>(R.id.idFolio)
+
+        // Establece el valor de numFolio en el elemento idFolio
+        idFolioTextView.text = numFolio
+
+
 
         val showPopupButton = findViewById<Button>(R.id.statusButton)
 
@@ -33,7 +64,18 @@ class DonationStatus : AppCompatActivity() {
             buttonToUpdate.setBackgroundColor(Color.parseColor("#2D8DE5"))
             // Cambia el texto del botón a "Activa"
             buttonToUpdate.text = "Activa"
-            dialog.dismiss() // Cierra el diálogo actual
+            // Actualiza el valor del botón statusButton
+
+            estadoSeleccionado = "Activa"
+            val returnIntent = Intent()
+            returnIntent.putExtra("estado", estadoSeleccionado)
+            setResult(RESULT_OK, returnIntent)
+
+            // Guarda el estado seleccionado en SharedPreferences
+            val editor = getSharedPreferences("MyPreferences", Context.MODE_PRIVATE).edit()
+            editor.putString("selectedStatus", estadoSeleccionado)
+            editor.apply()
+            dialog.dismiss()
         }
 
         completadoButton.setOnClickListener {
@@ -47,6 +89,19 @@ class DonationStatus : AppCompatActivity() {
             val secondDialog = Dialog(this)
             secondDialog.setContentView(R.layout.completed_status_donation)
             val confirmCancelationButton = secondDialog.findViewById<Button>(R.id.canceledDonationButton)
+
+
+            estadoSeleccionado = "Copmletada"
+            val returnIntent = Intent()
+            returnIntent.putExtra("estado", estadoSeleccionado)
+            setResult(RESULT_OK, returnIntent)
+
+            // Guarda el estado seleccionado en SharedPreferences
+            val editor = getSharedPreferences("MyPreferences", Context.MODE_PRIVATE).edit()
+            editor.putString("selectedStatus", estadoSeleccionado)
+            editor.apply()
+
+
 
             confirmCancelationButton.setOnClickListener {
                 // Realiza la acción de confirmar la cancelación aquí
@@ -69,6 +124,16 @@ class DonationStatus : AppCompatActivity() {
             secondDialog.setContentView(R.layout.canceled_status_donationa)
             val confirmCancelationButton = secondDialog.findViewById<Button>(R.id.canceledDonationButton)
 
+            estadoSeleccionado = "Cancelada"
+            val returnIntent = Intent()
+            returnIntent.putExtra("estado", estadoSeleccionado)
+            setResult(RESULT_OK, returnIntent)
+
+            // Guarda el estado seleccionado en SharedPreferences
+            val editor = getSharedPreferences("MyPreferences", Context.MODE_PRIVATE).edit()
+            editor.putString("selectedStatus", estadoSeleccionado)
+            editor.apply()
+
             confirmCancelationButton.setOnClickListener {
                 // Realiza la acción de confirmar la cancelación aquí
                 // Aquí se implementa la funcionalidad de la base de datos por si se necesita guardar el mensaje de cancelación
@@ -80,5 +145,6 @@ class DonationStatus : AppCompatActivity() {
 
         dialog.show()
     }
+
 
 }
