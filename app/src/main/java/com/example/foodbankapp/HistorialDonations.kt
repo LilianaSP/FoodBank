@@ -12,6 +12,7 @@ import android.widget.TextView
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 
+
 class HistorialDonations : AppCompatActivity() {
 
     private lateinit var sharedPreferences: SharedPreferences
@@ -19,6 +20,7 @@ class HistorialDonations : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_historial_donations)
+
 
         val scrollView = findViewById<LinearLayout>(R.id.linearLayoutInScrollView)
         sharedPreferences = getSharedPreferences("MyPreferences", Context.MODE_PRIVATE)
@@ -95,4 +97,5 @@ class HistorialDonations : AppCompatActivity() {
 
     data class Donacion(val id: Int, val numFolio: String, val idStatus: String, val idNombre: String, val aliadoStatus: String, var estado: String)
 }
+
 

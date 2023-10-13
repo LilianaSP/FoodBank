@@ -17,7 +17,7 @@ class MainActivity : AppCompatActivity() {
 
         // Creamos el cambio de activity para la activity_log_in
         loginButton.setOnClickListener{
-            var intent = Intent(this, LogInActivity::class.java)
+            var intent = Intent(this, Donations::class.java)
             startActivity(intent)
             finish()
         }

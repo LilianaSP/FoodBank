@@ -117,7 +117,10 @@
             android:hint="Descripción del post..."
             android:inputType="textMultiLine"
             android:lines="3"
-            android:scrollbars="vertical" />
+            android:scrollbars="vertical"
+            android:background="@drawable/edittext_background"
+            android:padding="8dp"
+            />
     </ScrollView>
 
     <Button
