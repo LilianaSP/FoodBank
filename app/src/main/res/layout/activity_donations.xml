@@ -36,7 +36,7 @@
         android:id="@+id/dashButton"
         android:layout_width="match_parent"
         android:layout_height="82dp"
-        android:background="@drawable/mainmenubutton"
+        android:foreground="@drawable/mainmenubutton"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.071"

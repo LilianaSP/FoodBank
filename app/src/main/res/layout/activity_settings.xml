@@ -6,6 +6,16 @@
     android:layout_height="match_parent"
     tools:context=".Settings">
 
+    <!-- Agrega un FrameLayout como fondo de toda la actividad -->
+    <FrameLayout
+        android:id="@+id/background_dim"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#80000000"
+        android:visibility="invisible"
+        android:elevation="50dp">
+    </FrameLayout>
+
 
     <RelativeLayout
         android:id="@+id/relativeLayout"
@@ -32,19 +42,18 @@
         app:srcCompat="@drawable/upperredframe" />
 
 
-    <ImageView
-        android:id="@+id/imageView"
+    <Button
+        android:id="@+id/dashButton"
         android:layout_width="match_parent"
         android:layout_height="82dp"
-        android:background="@drawable/background_with_border_bottom"
+        android:foreground="@drawable/mainmenubutton"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.071"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.008"
-
-        />
+        app:layout_constraintTop_toTopOf="@+id/imageView3"
+        app:layout_constraintVertical_bias="1.0"
+    />
 
 
     <TextView
@@ -55,7 +64,7 @@
         android:text="Configuraciones"
         android:textSize="34sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/imageView"
+        app:layout_constraintBottom_toTopOf="@+id/dashButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/imageView3"
@@ -117,7 +126,7 @@
         android:text="Activar notificaciones"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/imageView"
+        app:layout_constraintBottom_toTopOf="@+id/dashButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView10"
@@ -131,7 +140,7 @@
         android:text="Modo oscuro"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/imageView"
+        app:layout_constraintBottom_toTopOf="@+id/dashButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/switchNotifications"
