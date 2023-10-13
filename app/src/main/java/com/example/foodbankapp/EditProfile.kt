@@ -13,9 +13,9 @@ import android.widget.ImageView
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.PopupMenu
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import androidx.appcompat.widget.PopupMenu
 import com.google.android.material.bottomsheet.BottomSheetDialog
 
 class EditProfile : AppCompatActivity() {
@@ -107,21 +107,15 @@ class EditProfile : AppCompatActivity() {
             dialog.dismiss()
         }
 
-        // <<<<<<<<
 
-        val dashboardButton = findViewById<Button>(R.id.DashboardButton)
+
         val editButton = findViewById<Button>(R.id.EditButton)
         val editPasswordButton = findViewById<Button>(R.id.EditPasswordButton)
         imageEditProfile = findViewById<ImageView>(R.id.ImageEditProfile)
 
-        dashboardButton.setOnClickListener {
-            val intent = Intent(this, LoggedInActivity::class.java)
-            startActivity(intent)
-            finish()
-        }
 
         editPasswordButton.setOnClickListener {
-            val intent = Intent(this, ResetPassword::class.java)
+            val intent = Intent(this, New_password_input::class.java)
             startActivity(intent)
             finish()
         }

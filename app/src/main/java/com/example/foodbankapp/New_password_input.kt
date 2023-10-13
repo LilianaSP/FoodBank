@@ -9,7 +9,6 @@ import android.text.Editable
 import android.text.InputType
 import android.text.TextWatcher
 import android.view.Gravity
-import android.view.LayoutInflater
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
@@ -53,17 +52,6 @@ class New_password_input : AppCompatActivity() {
         containsNumCondition = findViewById(R.id.condition4)
         backButton = findViewById(R.id.backButton2)
 
-        // variabe del botón de confirmar contraseña
-        val inflater = LayoutInflater.from(this)
-        val popUpView = inflater.inflate(R.layout.pop_up_confirm_password,null)
-        val confirmPasswordButton = popUpView.findViewById<Button>(R.id.confirmPasswordButton)
-
-        confirmPasswordButton.setOnClickListener{
-            val intent = Intent(this, LogInActivity::class.java)
-            startActivity(intent)
-            finish()
-        }
-
 
         // Función de backButton
         backButton.setOnClickListener{
@@ -86,12 +74,6 @@ class New_password_input : AppCompatActivity() {
             togglePasswordVisibility2()
         }
 
-        // Función para cambiar de activity de al hacer click en el botón de confirmar la cnotraseña
-        confirmPasswordButton.setOnClickListener {
-            var intent = Intent(this, LogInActivity::class.java)
-            startActivity(intent)
-            finish()
-        }
 
 
         // Configura un TextWatcher para la confirmación de contraseña
@@ -123,7 +105,7 @@ class New_password_input : AppCompatActivity() {
             }
         })
 
-        val resetPasswordButton = findViewById<Button>(R.id.MiPerfil)
+        val resetPasswordButton = findViewById<Button>(R.id.myprofile)
 
         resetPasswordButton.setOnClickListener {
             val password = passwordInput.text.toString()
@@ -151,6 +133,15 @@ class New_password_input : AppCompatActivity() {
                 val layoutParams = window?.attributes
                 layoutParams?.gravity = Gravity.CENTER
 
+                //Funcionalidad del botón del pop_up
+                val confirmPasswordButton = view.findViewById<Button>(R.id.confirmPasswordButton)
+
+                confirmPasswordButton.setOnClickListener {
+                    val intent = Intent(this, LogInActivity::class.java)
+                    startActivity(intent)
+                    finish()
+                }
+
                 dialog.show()
 
 
@@ -158,6 +149,7 @@ class New_password_input : AppCompatActivity() {
                 Toast.makeText(this, "Revisa los datos", Toast.LENGTH_SHORT).show()
             }
         }
+
 
 
 

@@ -30,6 +30,23 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView8"
         app:layout_constraintVertical_bias="1.0" />
 
+    <TextView
+        android:id="@+id/textView33"
+        android:layout_width="182dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="12dp"
+        android:elevation="100dp"
+        android:text="Menu"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="48sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/dashButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/dashButton"
+        app:layout_constraintVertical_bias="0.36" />
+
     <ImageView
         android:id="@+id/imageView8"
         android:layout_width="match_parent"
@@ -164,20 +181,7 @@
         app:layout_constraintTop_toBottomOf="@+id/ImageEditProfile"
         app:layout_constraintVertical_bias="0.755" />
 
-    <Button
-        android:id="@+id/DashboardButton"
-        android:layout_width="112dp"
-        android:layout_height="48dp"
-        android:foreground="@drawable/green_button_cutom_input"
-        android:text="Editar"
-        android:textSize="20sp"
-        app:icon="@android:drawable/ic_menu_edit"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.036"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.023" />
+
 
     <TextView
         android:id="@+id/NameEditProfile"
@@ -205,6 +209,7 @@
         android:id="@+id/button"
         android:layout_width="172dp"
         android:layout_height="165dp"
+        android:layout_marginTop="80dp"
         android:foreground="@drawable/green_button_cutom_input"
         android:foregroundTint="#DC0E2A"
         android:text="Button"
@@ -212,7 +217,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.489"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/DashboardButton"
+        app:layout_constraintTop_toTopOf="@+id/background_dim"
         app:layout_constraintVertical_bias="0.061" />
 
     <Button
@@ -235,7 +240,8 @@
         android:id="@+id/textView32"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:drawableLeft="@android:drawable/ic_menu_edit"
+        android:layout_marginTop="20dp"
+        android:drawableLeft="@drawable/baseline_edit_24"
         android:drawableTint="#EADFDF"
         android:text=" Editar Foto"
         android:textColor="#fff"
@@ -243,7 +249,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/EditButton"
         app:layout_constraintEnd_toEndOf="@+id/EditButton"
         app:layout_constraintStart_toStartOf="@+id/EditButton"
-        app:layout_constraintTop_toTopOf="@+id/EditButton"
+        app:layout_constraintTop_toBottomOf="@+id/button"
         app:layout_constraintVertical_bias="0.26" />
 
     <TextView
@@ -259,24 +265,10 @@
         app:layout_constraintTop_toTopOf="@+id/EditButton" />
 
     <TextView
-        android:id="@+id/textView34"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:drawableLeft="@android:drawable/ic_menu_revert"
-        android:drawableTint="#FFFFFF"
-        android:text="Atrás"
-        android:textColor="#FFFFFF"
-        android:textSize="21sp"
-        app:layout_constraintBottom_toBottomOf="@+id/DashboardButton"
-        app:layout_constraintEnd_toEndOf="@+id/DashboardButton"
-        app:layout_constraintStart_toStartOf="@+id/DashboardButton"
-        app:layout_constraintTop_toTopOf="@+id/DashboardButton" />
-
-    <TextView
         android:id="@+id/textView25"
         android:layout_width="30dp"
         android:layout_height="37dp"
-        android:drawableLeft="@android:drawable/ic_menu_edit"
+        android:drawableLeft="@drawable/baseline_edit_24"
         android:drawableTint="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="@+id/EditPasswordButton"
         app:layout_constraintEnd_toEndOf="@+id/EditPasswordButton"

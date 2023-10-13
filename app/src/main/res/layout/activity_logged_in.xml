@@ -7,17 +7,71 @@
     tools:context=".LoggedInActivity">
 
     <!-- Agrega un FrameLayout como fondo de toda la actividad -->
+
+    <!-- Puedes configurar una imagen de marcador de posición -->
     <FrameLayout
         android:id="@+id/background_dim"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#80000000"
+        android:elevation="50dp"
         android:visibility="invisible"
-        android:elevation="50dp">
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="-44dp">
+
     </FrameLayout>
 
+    <LinearLayout
+        android:id="@+id/carouselLayout"
+        android:layout_width="423dp"
+        android:layout_height="266dp"
+        android:layout_centerInParent="true"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/imageView22"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/imageView1"
+            android:layout_width="416dp"
+            android:layout_height="185dp"
+            android:layout_marginTop="55dp"
+            android:layout_marginBottom="90dp"
+            app:layout_constraintBottom_toTopOf="@+id/imageView22"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/background_dim"
+            tools:srcCompat="@tools:sample/avatars" />
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="416dp"
+            android:layout_height="185dp"
+            android:layout_marginTop="55dp"
+            android:layout_marginBottom="90dp"
+            app:layout_constraintBottom_toTopOf="@+id/imageView22"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/background_dim"
+            tools:srcCompat="@tools:sample/avatars" />
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="416dp"
+            android:layout_height="185dp"
+            android:layout_marginTop="55dp"
+            android:layout_marginBottom="90dp"
+            app:layout_constraintBottom_toTopOf="@+id/imageView22"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/background_dim"
+            tools:srcCompat="@tools:sample/avatars" />
+
+    </LinearLayout>
+
+
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/redframe10"
         android:layout_width="410dp"
         android:layout_height="82dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -27,7 +81,7 @@
         app:srcCompat="@drawable/upperredframe" />
 
     <Button
-        android:id="@+id/MiPerfil"
+        android:id="@+id/myprofile"
         android:layout_width="331dp"
         android:layout_height="51dp"
         android:layout_centerInParent="true"
@@ -42,18 +96,18 @@
         app:layout_constraintBottom_toTopOf="@+id/HistoryDonationsButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView3"
+        app:layout_constraintTop_toBottomOf="@+id/redframe10"
         app:layout_constraintVertical_bias="0.79" />
 
     <ImageView
         android:id="@+id/imageView22"
         android:layout_width="182dp"
         android:layout_height="2dp"
-        app:layout_constraintBottom_toTopOf="@+id/MiPerfil"
+        app:layout_constraintBottom_toTopOf="@+id/myprofile"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView3"
+        app:layout_constraintTop_toBottomOf="@+id/redframe10"
         app:layout_constraintVertical_bias="0.927"
         app:srcCompat="@drawable/line"
         app:tint="#424242" />
@@ -74,10 +128,10 @@
         app:cornerRadius="14dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+        app:layout_constraintTop_toBottomOf="@+id/redframe10" />
 
     <Button
-        android:id="@+id/miPerfil4"
+        android:id="@+id/createPost"
         android:layout_width="331dp"
         android:layout_height="51dp"
         android:layout_centerInParent="true"
@@ -87,7 +141,7 @@
         android:text="Crear publicación"
         android:textColorHighlight="@color/lightGreen"
         android:textColorLink="@color/lightGreen"
-        android:textSize="28sp"
+        android:textSize="26sp"
         android:textStyle="bold"
         app:cornerRadius="14dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -111,7 +165,7 @@
         app:layout_constraintBottom_toTopOf="@+id/donacionesButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView3"
+        app:layout_constraintTop_toBottomOf="@+id/redframe10"
         app:layout_constraintVertical_bias="0.794" />
 
 
@@ -126,7 +180,7 @@
         app:layout_constraintBottom_toTopOf="@+id/imageView22"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView3"
+        app:layout_constraintTop_toBottomOf="@+id/redframe10"
         app:layout_constraintVertical_bias="0.924" />
 
     <Button
@@ -138,9 +192,25 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.071"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/miPerfil4"
-        app:layout_constraintVertical_bias="1.0"
-    />
+        app:layout_constraintTop_toBottomOf="@+id/createPost"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/textView30"
+        android:layout_width="182dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="12dp"
+        android:elevation="100dp"
+        android:text="Menu"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="48sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/dashButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/dashButton"
+        app:layout_constraintVertical_bias="0.36" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

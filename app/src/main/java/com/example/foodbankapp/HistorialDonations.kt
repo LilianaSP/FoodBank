@@ -1,9 +1,11 @@
 package com.example.foodbankapp
 
 import android.app.Activity
+import android.app.Dialog
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
+import android.content.res.ColorStateList
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -13,6 +15,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import com.google.android.material.bottomsheet.BottomSheetDialog
 
 
@@ -26,6 +29,7 @@ class HistorialDonations : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_historial_donations)
+
 
         // NABAR: >>>>>>>>
 
@@ -132,6 +136,51 @@ class HistorialDonations : AppCompatActivity() {
             aliadoStatusTextView.text = donacion.aliadoStatus
 
             val folioButton = itemView.findViewById<Button>(R.id.FolioButton)
+            val asignarChoferDialogButton = itemView.findViewById<Button>(R.id.AsignarButton)
+            val dialog = Dialog(this)
+            dialog.setContentView(R.layout.chofer_status)
+            val AsignarChoferDialog = dialog.findViewById<Button>(R.id.asignarChoferButton2)
+            val DesasignarChoferButton = dialog.findViewById<Button>(R.id.DesasignarChoferButton)
+
+            var isAsignado = false // Inicialmente, no asignado
+
+            asignarChoferDialogButton.setOnClickListener {
+                backgroundSemiTransparent.visibility = View.VISIBLE
+                dialog.show()
+
+                // Cambia el texto del botón según si está asignado o no
+                if (isAsignado) {
+                    asignarChoferDialogButton.text = "Asignado"
+                    asignarChoferDialogButton.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(this, R.color.lightBlue))
+                } else {
+                    asignarChoferDialogButton.text = "Asignar"
+                    asignarChoferDialogButton.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(this, R.color.lightGreen))
+
+                }
+            }
+
+            DesasignarChoferButton.setOnClickListener {
+                isAsignado = false
+                dialog.dismiss()
+            }
+
+            AsignarChoferDialog.setOnClickListener {
+                // Realiza la lógica de backend para guardar el nombre del chofer
+
+                // Cambia el estado del botón a asignado
+                isAsignado = true
+
+                // Cambia el texto del botón a "Asignado"
+                AsignarChoferDialog.text = "Asignado"
+                dialog.dismiss()
+            }
+
+
+
+            dialog.setOnDismissListener {
+                // Oculta el fondo semitransparente cuando se cierra el diálogo
+                backgroundSemiTransparent.visibility = View.INVISIBLE
+            }
 
             val layoutParams = LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT,

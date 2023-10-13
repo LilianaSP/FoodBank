@@ -1,3 +1,5 @@
+
+
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
@@ -41,6 +43,7 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+
 }
 
 dependencies {
@@ -71,8 +74,6 @@ dependencies {
     androidTestImplementation ("androidx.test:runner:1.1.0@aar")
     androidTestImplementation ("androidx.test:rules:1.1.0@aar")
     implementation(platform("com.google.firebase:firebase-bom:32.3.1"))
-
-
-
+    implementation ("androidx.viewpager2:viewpager2:1.0.0")
 
 }
