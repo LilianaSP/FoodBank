@@ -18,6 +18,7 @@ class DonationStatus : AppCompatActivity() {
 
     private lateinit var dialog: BottomSheetDialog // Declarar el diálogo como una propiedad de la actividad
     private lateinit var backgroundSemiTransparent: FrameLayout
+    private var isDialogVisible = false
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_donation_status)
@@ -116,6 +117,7 @@ class DonationStatus : AppCompatActivity() {
 
         showPopupButton.setOnClickListener {
             showCustomPopup(showPopupButton)
+            backgroundSemiTransparent.visibility = View.VISIBLE
         }
 
         // >>>>>>>>>> LÓGICA PARA LA INFO DEL FOLIO:
@@ -130,6 +132,7 @@ class DonationStatus : AppCompatActivity() {
 
 
 
+        // ============ Aquí se puede implementar el backedn ==============
         // Asignación de valores de ejemplo
         val nombreCompleto = "Emilio Berber"
         val esAliado = "Sí" // Puedes usar "Sí" o "No" según la información real.
@@ -137,6 +140,8 @@ class DonationStatus : AppCompatActivity() {
         val tipoDonacion = "Food"
         val telefono = "123 456 78 90"
         val mensaje = "He donado 25 paquetes de fresas"
+        // ======================================================================
+
 
         // Asignación de valores a los TextViews
         nombreTextView.text = nombreCompleto
@@ -160,27 +165,29 @@ class DonationStatus : AppCompatActivity() {
     }
 
     private fun showCustomPopup(buttonToUpdate: Button) {
+        // Muestra el fondo semitransparente al iniciar la función
+        backgroundSemiTransparent.visibility = View.VISIBLE
+
         val dialog = Dialog(this)
         dialog.setContentView(R.layout.status_pop_up)
 
-        // Obtén una referencia a los botones en el elemento emergente
+        dialog.setOnDismissListener {
+            // Oculta el fondo semitransparente cuando se cierra el diálogo
+            backgroundSemiTransparent.visibility = View.INVISIBLE
+        }
+
         val activoButton = dialog.findViewById<Button>(R.id.button)
         val completadoButton = dialog.findViewById<Button>(R.id.button2)
         val canceladoButton = dialog.findViewById<Button>(R.id.button3)
 
         activoButton.setOnClickListener {
-            // Cambia el fondo del botón a activo (lightBlue)
             buttonToUpdate.setBackgroundColor(Color.parseColor("#2D8DE5"))
-            // Cambia el texto del botón a "Activa"
             buttonToUpdate.text = "Activa"
-            // Actualiza el valor del botón statusButton
-
             estadoSeleccionado = "Activa"
             val returnIntent = Intent()
             returnIntent.putExtra("estado", estadoSeleccionado)
             setResult(RESULT_OK, returnIntent)
 
-            // Guarda el estado seleccionado en SharedPreferences
             val editor = getSharedPreferences("MyPreferences", Context.MODE_PRIVATE).edit()
             editor.putString("selectedStatus", estadoSeleccionado)
             editor.apply()
@@ -188,49 +195,75 @@ class DonationStatus : AppCompatActivity() {
         }
 
         completadoButton.setOnClickListener {
-            // Cambia el fondo del botón a completado (lightGreen)
             buttonToUpdate.setBackgroundColor(Color.parseColor("#06CB52"))
-            // Cambia el texto del botón a "Completada"
             buttonToUpdate.text = "Completada"
-            dialog.dismiss() // Cierra el diálogo actual
+            dialog.dismiss()
 
-            // Muestra el segundo diálogo "completed_status_donation"
             val secondDialog = Dialog(this)
             secondDialog.setContentView(R.layout.completed_status_donation)
-            val confirmCancelationButton = secondDialog.findViewById<Button>(R.id.TomarFotoButton)
 
+            // Muestra el fondo semitransparente para este diálogo secundario
+            backgroundSemiTransparent.visibility = View.VISIBLE
 
-            estadoSeleccionado = "Copmletada"
+            secondDialog.setOnDismissListener {
+                // Oculta el fondo semitransparente cuando se cierra el diálogo secundario
+                backgroundSemiTransparent.visibility = View.INVISIBLE
+                dialog.dismiss()
+            }
+
+            val confirmCompletedButton = secondDialog.findViewById<Button>(R.id.CompletedDonationButton)
+
+            estadoSeleccionado = "Completada"
             val returnIntent = Intent()
             returnIntent.putExtra("estado", estadoSeleccionado)
             setResult(RESULT_OK, returnIntent)
 
-            // Guarda el estado seleccionado en SharedPreferences
             val editor = getSharedPreferences("MyPreferences", Context.MODE_PRIVATE).edit()
             editor.putString("selectedStatus", estadoSeleccionado)
             editor.apply()
 
+            val takepictureDialog = Dialog(this)
+            takepictureDialog.setContentView(R.layout.agregar_evidencia_pop_up)
+            val TomarFotoButton = takepictureDialog.findViewById<Button>(R.id.TomarFotoButton)
+            val NoEvidenciaButton = takepictureDialog.findViewById<Button>(R.id.NoEvidenciaButton)
 
-
-            confirmCancelationButton.setOnClickListener {
-                // Realiza la acción de confirmar la cancelación aquí
-                // Por ejemplo, puedes guardar el motivo de cancelación en una base de datos o realizar la acción deseada.
-                secondDialog.dismiss() // Cierra el segundo diálogo
+            confirmCompletedButton.setOnClickListener {
+                secondDialog.dismiss()
+                // Muestra el fondo semitransparente para el siguiente diálogo secundario
+                backgroundSemiTransparent.visibility = View.VISIBLE
+                takepictureDialog.show()
             }
 
             secondDialog.show()
+
+            TomarFotoButton.setOnClickListener {
+                var intent = Intent(this, CreatingPost::class.java)
+                startActivity(intent)
+                finish()
+            }
+
+            NoEvidenciaButton.setOnClickListener {
+                takepictureDialog.dismiss()
+            }
         }
 
         canceladoButton.setOnClickListener {
-            // Cambia el fondo del botón a cancelado (red)
             buttonToUpdate.setBackgroundColor(Color.parseColor("#DD0E2A"))
-            // Cambia el texto del botón a "Cancelada"
             buttonToUpdate.text = "Cancelada"
-            dialog.dismiss() // Cierra el diálogo actual
+            dialog.dismiss()
 
-            // Muestra el segundo diálogo "canceled_status_donation"
             val secondDialog = Dialog(this)
             secondDialog.setContentView(R.layout.canceled_status_donationa)
+
+            // Muestra el fondo semitransparente para este diálogo secundario
+            backgroundSemiTransparent.visibility = View.VISIBLE
+
+            secondDialog.setOnDismissListener {
+                // Oculta el fondo semitransparente cuando se cierra el diálogo secundario
+                backgroundSemiTransparent.visibility = View.INVISIBLE
+                dialog.dismiss()
+            }
+
             val confirmCancelationButton = secondDialog.findViewById<Button>(R.id.TomarFotoButton)
 
             estadoSeleccionado = "Cancelada"
@@ -238,15 +271,12 @@ class DonationStatus : AppCompatActivity() {
             returnIntent.putExtra("estado", estadoSeleccionado)
             setResult(RESULT_OK, returnIntent)
 
-            // Guarda el estado seleccionado en SharedPreferences
             val editor = getSharedPreferences("MyPreferences", Context.MODE_PRIVATE).edit()
             editor.putString("selectedStatus", estadoSeleccionado)
             editor.apply()
 
             confirmCancelationButton.setOnClickListener {
-                // Realiza la acción de confirmar la cancelación aquí
-                // Aquí se implementa la funcionalidad de la base de datos por si se necesita guardar el mensaje de cancelación
-                secondDialog.dismiss() // Cierra el segundo diálogo
+                secondDialog.dismiss()
             }
 
             secondDialog.show()
@@ -254,5 +284,6 @@ class DonationStatus : AppCompatActivity() {
 
         dialog.show()
     }
+
 }
 

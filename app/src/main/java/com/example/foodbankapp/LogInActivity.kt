@@ -46,13 +46,15 @@ class LogInActivity : AppCompatActivity() {
         }
 
 
-
-
-
-
-
         //Creamos la funcionalidad del botón para el cambio de activity y la programación con la base de datos
          loginButton.setOnClickListener{
+             // Testing views ===================
+
+             var intent = Intent(this, HistorialDonations::class.java)
+             startActivity(intent)
+             finish()
+             // =========================
+
             if (checking())
             {
                 // convertirmos nuestras entrads de texto en string estas son las variables que se van a utilizar para llamar a la función de
@@ -68,7 +70,7 @@ class LogInActivity : AppCompatActivity() {
                         if(task.isSuccessful)
                         {
                         // Aquí es donde si el inicio de sesión fue exitoso, se cambia a la activity de logged In
-                            var intent = Intent(this, Dashboard::class.java)
+                            var intent = Intent(this, LoggedInActivity::class.java)
                             intent.putExtra("email", email)
                             startActivity(intent)
                             Toast.makeText(this, "Login Successful!", Toast.LENGTH_LONG).show()

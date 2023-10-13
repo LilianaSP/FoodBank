@@ -7,17 +7,20 @@
     tools:context=".LoggedInActivity">
 
     <!-- Agrega un FrameLayout como fondo de toda la actividad -->
+
+    <!-- Puedes configurar una imagen de marcador de posición -->
     <FrameLayout
         android:id="@+id/background_dim"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#80000000"
         android:elevation="50dp"
-        android:visibility="invisible">
+        android:visibility="invisible"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="-44dp">
 
     </FrameLayout>
 
-    <!-- Puedes configurar una imagen de marcador de posición -->
     <LinearLayout
         android:id="@+id/carouselLayout"
         android:layout_width="423dp"
@@ -78,7 +81,7 @@
         app:srcCompat="@drawable/upperredframe" />
 
     <Button
-        android:id="@+id/MiPerfil"
+        android:id="@+id/myprofile"
         android:layout_width="331dp"
         android:layout_height="51dp"
         android:layout_centerInParent="true"
@@ -100,7 +103,7 @@
         android:id="@+id/imageView22"
         android:layout_width="182dp"
         android:layout_height="2dp"
-        app:layout_constraintBottom_toTopOf="@+id/MiPerfil"
+        app:layout_constraintBottom_toTopOf="@+id/myprofile"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
@@ -128,7 +131,7 @@
         app:layout_constraintTop_toBottomOf="@+id/redframe10" />
 
     <Button
-        android:id="@+id/miPerfil4"
+        android:id="@+id/createPost"
         android:layout_width="331dp"
         android:layout_height="51dp"
         android:layout_centerInParent="true"
@@ -138,7 +141,7 @@
         android:text="Crear publicación"
         android:textColorHighlight="@color/lightGreen"
         android:textColorLink="@color/lightGreen"
-        android:textSize="28sp"
+        android:textSize="26sp"
         android:textStyle="bold"
         app:cornerRadius="14dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -189,14 +192,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.071"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/miPerfil4"
+        app:layout_constraintTop_toBottomOf="@+id/createPost"
         app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/textView30"
         android:layout_width="182dp"
         android:layout_height="55dp"
-        android:layout_marginStart="15dp"
+        android:layout_marginStart="12dp"
         android:elevation="100dp"
         android:text="Menu"
         android:textAlignment="center"

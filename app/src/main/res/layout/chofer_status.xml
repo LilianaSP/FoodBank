@@ -10,7 +10,7 @@
         android:id="@+id/password_input4"
         android:layout_width="190dp"
         android:layout_height="55dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         android:layout_marginBottom="20dp"
         android:background="@drawable/custom_input"
         android:drawablePadding="7dp"
@@ -24,13 +24,13 @@
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.482"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView19"
         app:layout_constraintVertical_bias="0.0" />
 
-
     <Button
-        android:id="@+id/TomarFotoButton"
+        android:id="@+id/AsignarChoferButton"
         android:layout_width="219dp"
         android:layout_height="40dp"
         android:layout_centerInParent="true"
@@ -50,11 +50,55 @@
         app:layout_constraintTop_toBottomOf="@+id/password_input4"
         app:layout_constraintVertical_bias="0.666" />
 
+    <Button
+        android:id="@+id/DesasignarChoferButton"
+        android:layout_width="219dp"
+        android:layout_height="40dp"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="10dp"
+        android:backgroundTint="@color/red"
+        android:fontFamily="sans-serif-black"
+        android:text="Desasignar"
+        android:textColorHighlight="@color/lightGreen"
+        android:textColorLink="@color/lightGreen"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:cornerRadius="7dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.34"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/password_input4"
+        app:layout_constraintVertical_bias="0.666" />
+
+    <Button
+        android:id="@+id/asignarChoferButton2"
+        android:layout_width="219dp"
+        android:layout_height="40dp"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="10dp"
+        android:backgroundTint="@color/lightGreen"
+        android:fontFamily="sans-serif-black"
+        android:text="Asignar chofer"
+        android:textColorHighlight="@color/lightGreen"
+        android:textColorLink="@color/lightGreen"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:cornerRadius="7dp"
+        app:layout_constraintBottom_toTopOf="@+id/AsignarChoferButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/password_input4"
+        app:layout_constraintVertical_bias="1.0" />
+
     <ImageView
         android:id="@+id/imageView19"
         android:layout_width="182dp"
         android:layout_height="2dp"
-        android:layout_marginBottom="75dp"
+        android:layout_marginBottom="200dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.486"

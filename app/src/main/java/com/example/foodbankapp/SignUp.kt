@@ -21,6 +21,17 @@ import com.google.firebase.firestore.FirebaseFirestore
             auth = FirebaseAuth.getInstance()
             db = FirebaseFirestore.getInstance()
 
+            val backButton = findViewById<Button>(R.id.backButton8)
+
+            backButton.setOnClickListener {
+                val intent = Intent(this, MainActivity::class.java)
+                startActivity(intent)
+                finish()
+            }
+
+
+
+
 
 
             val registerUser = findViewById<Button>(R.id.signUpButton)

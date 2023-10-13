@@ -86,6 +86,26 @@
         app:layout_constraintVertical_bias="1.008"
         app:srcCompat="@drawable/redframe" />
 
+    <Button
+        android:id="@+id/backButton8"
+        android:layout_width="139dp"
+        android:layout_height="49dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="8dp"
+        android:backgroundTint="@color/lightGreen"
+        android:elevation="8dp"
+        android:fontFamily="sans-serif-black"
+        android:text="Regresar"
+        android:textSize="21sp"
+        android:textStyle="bold"
+        app:cornerRadius="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.073"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
     <ScrollView
         android:id="@+id/scrollView2"
         android:layout_width="400dp"
@@ -226,52 +246,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/redframe10"
         app:layout_constraintVertical_bias="0.249" />
-
-    <Button
-        android:id="@+id/backButton"
-        android:layout_width="97dp"
-        android:layout_height="45dp"
-        android:background="@drawable/green_button_cutom_input"
-        android:elevation="8dp"
-        android:fontFamily="sans-serif-black"
-        android:foreground="@drawable/green_button_cutom_input"
-        android:textSize="30sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.062"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.023" />
-
-    <TextView
-        android:id="@+id/textView13"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:elevation="8dp"
-        android:fontFamily="sans-serif-medium"
-        android:text="Atrás"
-        android:textColor="#FFFFFF"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/redframe10"
-        app:layout_constraintEnd_toEndOf="@+id/redframe10"
-        app:layout_constraintHorizontal_bias="0.157"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.454" />
-
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="84dp"
-        android:layout_height="67dp"
-        app:layout_constraintBottom_toTopOf="@+id/textView10"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/relativeLayout"
-        app:layout_constraintVertical_bias="0.082"
-        app:srcCompat="@drawable/arrow_foreground" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

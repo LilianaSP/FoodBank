@@ -61,7 +61,7 @@ class NewPasswordInputInstrumentedTest {
         Espresso.onView(withId(R.id.password_input2)).perform(typeText("Password$123"), closeSoftKeyboard())
 
         // Haz clic en el botón de restablecer contraseña
-        Espresso.onView(withId(R.id.MiPerfil)).perform(click())
+        Espresso.onView(withId(R.id.myprofile)).perform(click())
 
         // Verifica que la actividad LogInActivity se haya iniciado
         Espresso.onView(withId(R.id.LogInButton)).check(matches(isDisplayed()))

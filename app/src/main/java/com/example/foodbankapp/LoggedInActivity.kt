@@ -49,6 +49,39 @@ class LoggedInActivity : AppCompatActivity() {
         val donationsHistoryButton = view.findViewById<Button>(R.id.HistoryButton)
         val settingButton = view.findViewById<Button>(R.id.ConfigButton)
 
+
+        //configuración botones principales
+        val myprofile = findViewById<Button>(R.id.myprofile)
+        val HistoryDonationsButton = findViewById<Button>(R.id.HistoryDonationsButton)
+        val donacionesButton = findViewById<Button>(R.id.donacionesButton)
+        val createPost = findViewById<Button>(R.id.createPost)
+
+        createPost.setOnClickListener {
+            val intent = Intent(this, CreatingPost::class.java)
+            startActivity(intent)
+            finish()
+        }
+
+
+        myprofile.setOnClickListener {
+            val intent = Intent(this, EditProfile::class.java)
+            startActivity(intent)
+            finish()
+        }
+
+        HistoryDonationsButton.setOnClickListener {
+            val intent = Intent(this, HistorialDonations::class.java)
+            startActivity(intent)
+            finish()
+        }
+
+        donacionesButton.setOnClickListener {
+            val intent = Intent(this, Donations::class.java)
+            startActivity(intent)
+            finish()
+        }
+
+        //configuración botones del menú desplegable
         mainPage.setOnClickListener {
             dialog.dismiss()
         }
