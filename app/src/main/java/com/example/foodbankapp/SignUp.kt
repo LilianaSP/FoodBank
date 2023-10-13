@@ -64,14 +64,14 @@ import com.google.firebase.firestore.FirebaseFirestore
                     auth.createUserWithEmailAndPassword(userEmail,userPassword)
 
                     userCollection.document(userEmail).set(user)
-                    Toast.makeText(this, "Registered!", Toast.LENGTH_SHORT)
+                    Toast.makeText(this, "Resgistro exitoso", Toast.LENGTH_SHORT)
                     val intent= Intent(this,LogInActivity::class.java)
                     startActivity(intent)
                     finish()
 
                 }
                 else{
-                    Toast.makeText(this, "Verify all the spaces are filled in!", Toast.LENGTH_SHORT)
+                    Toast.makeText(this, "¡Completa todos los campos!", Toast.LENGTH_SHORT)
                 }
             }
 

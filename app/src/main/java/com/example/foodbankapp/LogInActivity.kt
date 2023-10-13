@@ -48,15 +48,6 @@ class LogInActivity : AppCompatActivity() {
 
         //Creamos la funcionalidad del botón para el cambio de activity y la programación con la base de datos
          loginButton.setOnClickListener{
-             /*
-             // Testing views ===================
-
-             var intent = Intent(this, HistorialDonations::class.java)
-             startActivity(intent)
-             finish()
-             // =========================
-
-              */
 
             if (checking())
             {
@@ -88,7 +79,7 @@ class LogInActivity : AppCompatActivity() {
             }
             else
             {
-                Toast.makeText(this, "Enter the Details", Toast.LENGTH_LONG).show()
+                Toast.makeText(this, "¡Completa todos los campos!", Toast.LENGTH_LONG).show()
             }
         }
 
