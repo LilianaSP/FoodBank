@@ -10,7 +10,7 @@
         android:id="@+id/dashButton2"
         android:layout_width="394dp"
         android:layout_height="78dp"
-        android:background="@drawable/mainmenubutton"
+        android:foreground="@drawable/mainmenubutton"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -50,6 +50,21 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
 
+    <TextView
+        android:id="@+id/idFolio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="#Folio"
+        android:textColor="@color/red"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.658"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView23"
+        app:layout_constraintVertical_bias="0.216" />
+
     <Button
         android:id="@+id/statusButton"
         android:layout_width="158dp"
@@ -61,23 +76,10 @@
         app:cornerRadius="15dp"
         app:layout_constraintBottom_toTopOf="@+id/dashButton2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.533"
+        app:layout_constraintHorizontal_bias="0.509"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView23"
-        app:layout_constraintVertical_bias="0.131" />
-
-    <ImageView
-        android:id="@+id/imageView24"
-        android:layout_width="65dp"
-        android:layout_height="58dp"
-        android:layout_marginTop="70dp"
-        app:layout_constraintBottom_toBottomOf="@+id/statusButton"
-        app:layout_constraintEnd_toEndOf="@+id/statusButton"
-        app:layout_constraintHorizontal_bias="0.543"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textView22"
-        app:layout_constraintVertical_bias="0.55"
-        app:srcCompat="@drawable/arrow_drop_down" />
+        app:layout_constraintVertical_bias="0.367" />
 
     <TextView
         android:id="@+id/textView22"
@@ -89,23 +91,239 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.349"
+        app:layout_constraintHorizontal_bias="0.331"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView23"
-        app:layout_constraintVertical_bias="0.013" />
+        app:layout_constraintVertical_bias="0.216" />
+
+    <ImageView
+        android:id="@+id/imageView24"
+        android:layout_width="65dp"
+        android:layout_height="58dp"
+        android:layout_marginTop="70dp"
+        app:layout_constraintBottom_toBottomOf="@+id/statusButton"
+        app:layout_constraintEnd_toEndOf="@+id/statusButton"
+        app:layout_constraintHorizontal_bias="0.531"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textView22"
+        app:layout_constraintVertical_bias="0.35"
+        app:srcCompat="@drawable/arrow_drop_down" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="295dp"
+        android:layout_height="200dp"
+        android:background="@drawable/rounded_background"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/dashButton2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/statusButton"
+        app:layout_constraintVertical_bias="0.214">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"> <!-- Espacio superior entre cada par de campos -->
+
+            <!-- Campo Nombre -->
+            <TextView
+                android:id="@+id/nombreLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:text="  Nombre: "
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/nombreTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/nombreLabel"
+                android:text="nombre"
+                android:textColor="#000000"
+                android:textSize="18sp" />
+
+            <!-- Campo Aliado -->
+            <TextView
+                android:id="@+id/aliadoLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/nombreLabel"
+                android:layout_alignStart="@id/nombreLabel"
+                android:text="  Aliado: "
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/aliadoTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@id/aliadoLabel"
+                android:layout_toEndOf="@id/aliadoLabel"
+                android:text="no"
+                android:textColor="#000000"
+                android:textSize="18sp" />
+
+            <!-- Campo Correo -->
+            <TextView
+                android:id="@+id/correoLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/aliadoLabel"
+                android:layout_alignStart="@id/nombreLabel"
+                android:text="  Correo: "
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/correoTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@id/correoLabel"
+                android:layout_toEndOf="@id/correoLabel"
+                android:text="ejemplo@hotmail.com"
+                android:textColor="#000000"
+                android:textSize="18sp" />
+
+            <!-- Campo Donaciones -->
+            <TextView
+                android:id="@+id/donacionesLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/correoLabel"
+                android:layout_alignStart="@id/nombreLabel"
+                android:text="  Donaciones: "
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/donacionesTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@id/donacionesLabel"
+                android:layout_toEndOf="@id/donacionesLabel"
+                android:text="Tipo de donación"
+                android:textColor="#000000"
+                android:textSize="18sp" />
+
+            <!-- Campo Teléfono -->
+            <TextView
+                android:id="@+id/telefonoLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/donacionesLabel"
+                android:layout_alignStart="@id/nombreLabel"
+                android:text="  Teléfono: "
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/telefonoTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@id/telefonoLabel"
+                android:layout_toEndOf="@id/telefonoLabel"
+                android:text="123 456 78 90"
+                android:textColor="#000000"
+                android:textSize="18sp" />
+
+            <!-- Campo Mensaje -->
+            <TextView
+                android:id="@+id/mensajeLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/telefonoLabel"
+                android:layout_alignStart="@id/nombreLabel"
+                android:text="  Mensaje: "
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/mensajeTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@id/mensajeLabel"
+                android:layout_toEndOf="@id/mensajeLabel"
+                android:text="mensaje"
+                android:textColor="#000000"
+                android:textSize="18sp" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
 
     <TextView
-        android:id="@+id/idFolio"
+        android:id="@+id/textView29"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="#Folio"
-        android:textColor="@color/red"
-        android:textSize="34sp"
+        android:layout_gravity="center"
+        android:fontFamily="sans-serif"
+        android:gravity="center"
+        android:letterSpacing="0"
+        android:text="Folio de donaciones\nen especie"
+        android:textColor="#5d5d5f"
+        android:textSize="35sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/statusButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.677"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView23"
-        app:layout_constraintVertical_bias="0.013" />
+        app:layout_constraintVertical_bias="0.081"
+        tools:ignore="MissingConstraints" />
+
+    <ImageView
+        android:id="@+id/imageView36"
+        android:layout_width="300dp"
+        android:layout_height="6dp"
+        android:layout_marginBottom="200dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.528"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView29"
+        app:layout_constraintVertical_bias="0.037"
+        app:srcCompat="@drawable/line"
+        app:tint="#DD0E2A" />
+
+    <Button
+        android:id="@+id/goToHistorialDBTN"
+        android:layout_width="298dp"
+        android:layout_height="54dp"
+        android:backgroundTint="#E89040"
+        android:text="Historial de donaciones"
+        android:textSize="21sp"
+        android:textStyle="bold"
+        app:cornerRadius="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/dashButton2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

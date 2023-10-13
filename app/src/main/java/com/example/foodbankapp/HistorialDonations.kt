@@ -90,12 +90,11 @@ class HistorialDonations : AppCompatActivity() {
         return listOf(
             Donacion(1, "Folio 1", "Status 1", "Nombre 1", "Aliado 1", selectedStatus),
             Donacion(2, "Folio 2", "Status 2", "Nombre 2", "Aliado 2", selectedStatus),
-            Donacion(3, "Folio 2", "Status 2", "Nombre 2", "Aliado 2", selectedStatus)
+            Donacion(3, "Folio 3", "Status 3", "Nombre 3", "Aliado 3", selectedStatus)
             // Agrega más elementos según tus datos
         )
     }
 
     data class Donacion(val id: Int, val numFolio: String, val idStatus: String, val idNombre: String, val aliadoStatus: String, var estado: String)
 }
-
 
