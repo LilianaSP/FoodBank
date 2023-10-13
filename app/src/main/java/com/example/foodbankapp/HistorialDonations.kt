@@ -10,6 +10,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.Button
+import android.widget.EditText
 import android.widget.FrameLayout
 import android.widget.LinearLayout
 import android.widget.TextView
@@ -141,29 +142,30 @@ class HistorialDonations : AppCompatActivity() {
             dialog.setContentView(R.layout.chofer_status)
             val AsignarChoferDialog = dialog.findViewById<Button>(R.id.asignarChoferButton2)
             val DesasignarChoferButton = dialog.findViewById<Button>(R.id.DesasignarChoferButton)
+            val chofer = dialog.findViewById<EditText>(R.id.password_input4)
 
             var isAsignado = false // Inicialmente, no asignado
 
             asignarChoferDialogButton.setOnClickListener {
                 backgroundSemiTransparent.visibility = View.VISIBLE
                 dialog.show()
-
-                // Cambia el texto del botón según si está asignado o no
-                if (isAsignado) {
-                    asignarChoferDialogButton.text = "Asignado"
-                    asignarChoferDialogButton.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(this, R.color.lightBlue))
-                } else {
-                    asignarChoferDialogButton.text = "Asignar"
-                    asignarChoferDialogButton.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(this, R.color.lightGreen))
-
-                }
             }
 
+
+            // CAMBIAR BOTÓN CUANDO IS FALSE
             DesasignarChoferButton.setOnClickListener {
                 isAsignado = false
+
+                // Restablece el EditText a un valor vacío para que no se vea ningun chofer
+                chofer.text.clear()
+
+                asignarChoferDialogButton.text = "Asignar"
+                asignarChoferDialogButton.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(this, R.color.lightGreen))
+
                 dialog.dismiss()
             }
 
+            // CAMBIAR BOTÓN CUANDO IS TRUE
             AsignarChoferDialog.setOnClickListener {
                 // Realiza la lógica de backend para guardar el nombre del chofer
 
@@ -171,7 +173,9 @@ class HistorialDonations : AppCompatActivity() {
                 isAsignado = true
 
                 // Cambia el texto del botón a "Asignado"
-                AsignarChoferDialog.text = "Asignado"
+                asignarChoferDialogButton.text = "Asignado"
+                asignarChoferDialogButton.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(this, R.color.lightBlue))
+
                 dialog.dismiss()
             }
 
