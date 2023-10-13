@@ -88,7 +88,7 @@ class DonationStatus : AppCompatActivity() {
             // Muestra el segundo diálogo "completed_status_donation"
             val secondDialog = Dialog(this)
             secondDialog.setContentView(R.layout.completed_status_donation)
-            val confirmCancelationButton = secondDialog.findViewById<Button>(R.id.canceledDonationButton)
+            val confirmCancelationButton = secondDialog.findViewById<Button>(R.id.TomarFotoButton)
 
 
             estadoSeleccionado = "Copmletada"
@@ -122,7 +122,7 @@ class DonationStatus : AppCompatActivity() {
             // Muestra el segundo diálogo "canceled_status_donation"
             val secondDialog = Dialog(this)
             secondDialog.setContentView(R.layout.canceled_status_donationa)
-            val confirmCancelationButton = secondDialog.findViewById<Button>(R.id.canceledDonationButton)
+            val confirmCancelationButton = secondDialog.findViewById<Button>(R.id.TomarFotoButton)
 
             estadoSeleccionado = "Cancelada"
             val returnIntent = Intent()
