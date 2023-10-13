@@ -65,7 +65,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 
                     userCollection.document(userEmail).set(user)
                     Toast.makeText(this, "Registered!", Toast.LENGTH_SHORT)
-                    val intent= Intent(this,Dashboard::class.java)
+                    val intent= Intent(this,LogInActivity::class.java)
                     startActivity(intent)
                     finish()
 

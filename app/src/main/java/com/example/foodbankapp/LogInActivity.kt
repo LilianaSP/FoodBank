@@ -48,12 +48,15 @@ class LogInActivity : AppCompatActivity() {
 
         //Creamos la funcionalidad del botón para el cambio de activity y la programación con la base de datos
          loginButton.setOnClickListener{
+             /*
              // Testing views ===================
 
              var intent = Intent(this, HistorialDonations::class.java)
              startActivity(intent)
              finish()
              // =========================
+
+              */
 
             if (checking())
             {
