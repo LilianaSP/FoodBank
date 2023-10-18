@@ -1,19 +1,24 @@
 package com.example.foodbankapp
 
 import android.app.Dialog
+import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Button
+import android.widget.EditText
 import android.widget.FrameLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.bottomsheet.BottomSheetDialog
+import com.google.firebase.firestore.FirebaseFirestore
 
 class DonationStatus : AppCompatActivity() {
 
     private var estadoSeleccionado: String = ""
+    private lateinit var db:FirebaseFirestore
 
     private lateinit var dialog: BottomSheetDialog // Declarar el diálogo como una propiedad de la actividad
     private lateinit var backgroundSemiTransparent: FrameLayout
@@ -44,6 +49,10 @@ class DonationStatus : AppCompatActivity() {
             // Oculta el fondo semi-transparente cuando se cierra el diálogo
             backgroundSemiTransparent.visibility = View.INVISIBLE
         }
+
+
+
+
 
         //Obtenemos las referencias de los botones del dashboardmenu
         val mainPage = view.findViewById<Button>(R.id.MainPageButton)
@@ -121,34 +130,17 @@ class DonationStatus : AppCompatActivity() {
 
         // >>>>>>>>>> LÓGICA PARA LA INFO DEL FOLIO:
 
-        // Declaración de variables y asignación de valores de ejemplo
-        val nombreTextView = findViewById<TextView>(R.id.nombreTextView)
-        val aliadoTextView = findViewById<TextView>(R.id.aliadoTextView)
-        val correoTextView = findViewById<TextView>(R.id.correoTextView)
-        val donacionesTextView = findViewById<TextView>(R.id.donacionesTextView)
-        val telefonoTextView = findViewById<TextView>(R.id.telefonoTextView)
-        val mensajeTextView = findViewById<TextView>(R.id.mensajeTextView)
-
-
-
         // ============ Aquí se puede implementar el backedn ==============
         // Asignación de valores de ejemplo
-        val nombreCompleto = "Emilio Berber"
-        val esAliado = "Sí" // Puedes usar "Sí" o "No" según la información real.
-        val correo = "emilioberber@hotmail.com"
-        val tipoDonacion = "Food"
-        val telefono = "123 456 78 90"
-        val mensaje = "He donado 25 paquetes de fresas"
-        // ======================================================================
 
+        val sharePref = this.getPreferences(Context.MODE_PRIVATE)?:return
 
-        // Asignación de valores a los TextViews
-        nombreTextView.text = nombreCompleto
-        aliadoTextView.text = esAliado
-        correoTextView.text = correo
-        donacionesTextView.text = tipoDonacion
-        telefonoTextView.text = telefono
-        mensajeTextView.text = mensaje
+        var donationID=intent.getStringExtra("donacionId")
+
+        if(donationID != null)
+        {
+            setText(donationID)
+        }
 
         // <<<<<<<<<<<<<<
 
@@ -212,9 +204,24 @@ class DonationStatus : AppCompatActivity() {
         val dialog = Dialog(this)
         dialog.setContentView(R.layout.canceled_status_donationa)
 
+        //password_input4
+
         val confirmCancelationButton = dialog.findViewById<Button>(R.id.TomarFotoButton)
 
         confirmCancelationButton.setOnClickListener {
+            val mes = dialog.findViewById<EditText>(R.id.password_input4)
+
+            // ... (código adicional)
+            var donationID=intent.getStringExtra("donacionId")
+            val status = hashMapOf<String, Any> ("MESSAGE" to mes.text.toString())
+
+            if (donationID != null) {
+                db.collection("DONATION LOG").document(donationID).update(status)
+            }
+            mes.setText(mes.text)
+            var message = findViewById<TextView>(R.id.mensajeTextView)
+            message.text=mes.text.toString()
+
             dialog.dismiss()
         }
 
@@ -233,6 +240,13 @@ class DonationStatus : AppCompatActivity() {
             buttonToUpdate.setBackgroundColor(Color.parseColor("#2D8DE5"))
             buttonToUpdate.text = "Activa"
             // ... (código adicional)
+            var donationID=intent.getStringExtra("donacionId")
+            val status = hashMapOf<String, Any> ("STATUS" to "Activa")
+
+            if (donationID != null) {
+                db.collection("DONATION LOG").document(donationID).update(status)
+            }
+
             dialog.dismiss()
         }
 
@@ -240,6 +254,12 @@ class DonationStatus : AppCompatActivity() {
             buttonToUpdate.setBackgroundColor(Color.parseColor("#06CB52"))
             buttonToUpdate.text = "Completada"
             // ... (código adicional)
+            var donationID=intent.getStringExtra("donacionId")
+            val status = hashMapOf<String, Any> ("STATUS" to "Completada")
+
+            if (donationID != null) {
+                db.collection("DONATION LOG").document(donationID).update(status)
+            }
             createCompletedStatusDialog()
             dialog.dismiss()
         }
@@ -248,13 +268,48 @@ class DonationStatus : AppCompatActivity() {
             buttonToUpdate.setBackgroundColor(Color.parseColor("#DD0E2A"))
             buttonToUpdate.text = "Cancelada"
             // ... (código adicional)
+            var donationID=intent.getStringExtra("donacionId")
+            val status = hashMapOf<String, Any> ("STATUS" to "Cancelada")
+
+            if (donationID != null) {
+                db.collection("DONATION LOG").document(donationID).update(status)
+            }
             createCanceledStatusDialog()
             dialog.dismiss()
         }
 
         dialog.show()
     }
+    private fun setText(donationId:String)
+    {
+        db= FirebaseFirestore.getInstance()
+        if(donationId !=null) {
+            db.collection("DONATION LOG").document(donationId).get()
+                .addOnSuccessListener { tasks->
+                    var folio = findViewById<TextView>(R.id.idFolio)
+                    var ally = findViewById<TextView>(R.id.nombreTextView)
+                    var allyStatus = findViewById<TextView>(R.id.aliadoTextView)
+                    var mail = findViewById<TextView>(R.id.correoTextView)
+                    var donation = findViewById<TextView>(R.id.donacionesTextView)
+                    var phone = findViewById<TextView>(R.id.telefonoTextView)
+                    var message = findViewById<TextView>(R.id.mensajeTextView)
+                    var status= findViewById<TextView>(R.id.statusButton)
 
+                    folio.text=tasks.get("FOLIO").toString()
+                    ally.text=tasks.get("ALLY").toString()
+                    allyStatus.text=tasks.get("ALLY_STATUS").toString()
+                    mail.text=tasks.get("MAIL").toString()
+                    donation.text=tasks.get("NAME").toString()
+                    phone.text=tasks.get("PHONE").toString()
+                    message.text=tasks.get("MESSAGE").toString()
+                    status.text=tasks.get("STATUS").toString()
+
+
+
+                }
+        }
+
+    }
 
 
 }
