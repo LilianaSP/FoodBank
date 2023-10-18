@@ -55,8 +55,6 @@ class LogInActivity : AppCompatActivity() {
                 // "auth.signInWithEmailAndPassword(email,password)"
                 val email = emailInput.text.toString()
                 val password = passwordInput.text.toString()
-                Log.d("AQUI MERO",email)
-                Log.d("AQUI MERO",password)
 
                 auth.signInWithEmailAndPassword(email,password)
                     .addOnCompleteListener(this){

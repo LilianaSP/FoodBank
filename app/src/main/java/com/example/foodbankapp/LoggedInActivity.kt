@@ -1,13 +1,16 @@
 package com.example.foodbankapp
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.FrameLayout
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.bottomsheet.BottomSheetDialog
 class LoggedInActivity : AppCompatActivity() {
@@ -29,6 +32,16 @@ class LoggedInActivity : AppCompatActivity() {
 
         val dashButton: Button = findViewById(R.id.dashButton)
         val view = layoutInflater.inflate(R.layout.dashboardmenu, null)
+
+
+        // Tenemos que declarar esta variable para tenerla disponible en la pagina del perfil
+        var correo=intent.getStringExtra("email")
+
+
+        if(correo != null) {
+
+            Global.GlobalVariables.appUserEmail = correo.toString()
+        }
 
         dialog = BottomSheetDialog(this)
         dialog.setContentView(view)
@@ -65,6 +78,7 @@ class LoggedInActivity : AppCompatActivity() {
 
         myprofile.setOnClickListener {
             val intent = Intent(this, EditProfile::class.java)
+            intent.putExtra("email", correo)
             startActivity(intent)
             finish()
         }

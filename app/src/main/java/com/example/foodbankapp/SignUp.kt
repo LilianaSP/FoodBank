@@ -31,9 +31,6 @@ import com.google.firebase.firestore.FirebaseFirestore
 
 
 
-
-
-
             val registerUser = findViewById<Button>(R.id.signUpButton)
 
             registerUser.setOnClickListener{
@@ -49,16 +46,15 @@ import com.google.firebase.firestore.FirebaseFirestore
                     val userLname = last_name_input.text.toString()
                     val userJob = job_type_input.text.toString()
                     val userEmail = email_input.text.toString()
-                    val userPassword = password_input.text.toString()
-
-
-
+                    val passHide = "*"
+                    val userPassword =password_input.text.toString()
+                    val hiddenPassword = passHide.repeat(password_input.text.length)
                     val user = hashMapOf(
                         "NAME" to userName,
                         "FIRST_LNAME" to userLname,
                         "JOB_TYPE" to userJob,
                         "EMAIL" to userEmail,
-                        "PASSWORD" to userPassword,
+                        "PASSWORD" to hiddenPassword,
                     )
                     val userCollection = db.collection("USERS")
                     auth.createUserWithEmailAndPassword(userEmail,userPassword)

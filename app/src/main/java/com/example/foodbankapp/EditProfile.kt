@@ -1,15 +1,18 @@
 package com.example.foodbankapp
 
 import android.Manifest
+import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.os.Bundle
 import android.provider.MediaStore
+import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.FrameLayout
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
@@ -17,12 +20,12 @@ import androidx.appcompat.widget.PopupMenu
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.google.android.material.bottomsheet.BottomSheetDialog
+import com.google.firebase.firestore.FirebaseFirestore
 
 class EditProfile : AppCompatActivity() {
 
     private lateinit var imageEditProfile: ImageView
-
-
+    private lateinit var db:FirebaseFirestore
     private lateinit var dialog: BottomSheetDialog // Declarar el diálogo como una propiedad de la actividad
     private lateinit var backgroundSemiTransparent: FrameLayout
 
@@ -40,8 +43,6 @@ class EditProfile : AppCompatActivity() {
                 }
             }
         }
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_edit_profile)
@@ -113,6 +114,12 @@ class EditProfile : AppCompatActivity() {
         val editPasswordButton = findViewById<Button>(R.id.EditPasswordButton)
         imageEditProfile = findViewById<ImageView>(R.id.ImageEditProfile)
 
+        val sharePref = this.getPreferences(Context.MODE_PRIVATE)?:return
+        var correo=intent.getStringExtra("email")
+
+        if (Global.GlobalVariables.appUserEmail.toString() != null) {
+            setText(Global.GlobalVariables.appUserEmail.toString())
+        }
 
         editPasswordButton.setOnClickListener {
             val intent = Intent(this, New_password_input::class.java)
@@ -172,6 +179,27 @@ class EditProfile : AppCompatActivity() {
         }
     }
 
+
+    private fun setText(correo:String)
+    {
+        db= FirebaseFirestore.getInstance()
+        if(correo !=null) {
+            db.collection("USERS").document(correo).get()
+                .addOnSuccessListener { tasks->
+                    var name = findViewById<TextView>(R.id.NameEditProfile)
+                    var lastname = findViewById<TextView>(R.id.LastNameEditProfile)
+                    var userpassword = findViewById<TextView>(R.id.textView21)
+                    var mail = findViewById<TextView>(R.id.EmailEditProfile)
+
+                    mail.text=correo
+                    name.text=tasks.get("NAME").toString()
+                    lastname.text=tasks.get("FIRST_LNAME").toString()
+                    userpassword.text=tasks.get("PASSWORD").toString()
+
+                }
+        }
+
+    }
     companion object {
         private const val REQUEST_IMAGE_CAPTURE = 1
     }
