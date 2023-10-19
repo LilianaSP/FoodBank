@@ -23,7 +23,6 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import com.facebook.share.model.ShareContent
 import com.facebook.share.model.ShareHashtag
 import com.facebook.share.model.ShareLinkContent
 import com.facebook.share.widget.ShareDialog
@@ -173,11 +172,19 @@ class CreatingPost : AppCompatActivity() {
         // SHARE POST TO FACEBOOK BUTTON
         val btnShare = findViewById<Button>(R.id.btnShare)
 
+
         btnShare.setOnClickListener {
+            val editTextDescription = findViewById<TextView>(R.id.editTextDescription)
+            val descriptionText = editTextDescription.text.toString().trim()
+
             val imageToUpload = findViewById<ImageView>(R.id.imageToUpload)
 
+            //Apartado para crear publicación
             val hashtag = ShareHashtag.Builder().setHashtag("#FOODBANK").build()
-            var content = ShareLinkContent.Builder().setQuote("This is a post made from the app!!")
+            // Este apartado es el que construye el post
+            // Share hashtag que agrega el hastag
+            // setContentUrl
+            var content = ShareLinkContent.Builder().setQuote(descriptionText)
                 .setShareHashtag(hashtag)
                 .setContentUrl(Uri.parse("https://bdalimentos.org/"))
                 .build()
