@@ -9,6 +9,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 
 class LogInActivity : AppCompatActivity() {
 
@@ -61,6 +62,11 @@ class LogInActivity : AppCompatActivity() {
                         task->
                         if(task.isSuccessful)
                         {
+                           val user: FirebaseUser? = auth.currentUser
+                            if (user!= null)
+                            {
+                                Global.GlobalVariables.user = user
+                            }
                         // Aquí es donde si el inicio de sesión fue exitoso, se cambia a la activity de logged In
                             var intent = Intent(this, LoggedInActivity::class.java)
                             intent.putExtra("email", email)
