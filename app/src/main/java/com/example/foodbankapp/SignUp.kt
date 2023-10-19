@@ -2,6 +2,7 @@ package com.example.foodbankapp
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
@@ -67,7 +68,8 @@ import com.google.firebase.firestore.FirebaseFirestore
 
                 }
                 else{
-                    Toast.makeText(this, "¡Completa todos los campos!", Toast.LENGTH_SHORT)
+
+                    Toast.makeText(this, "¡Revisa todos los campos!", Toast.LENGTH_LONG)
                 }
             }
 
@@ -87,9 +89,10 @@ import com.google.firebase.firestore.FirebaseFirestore
             val password = userPassword.text.toString()
 
 
-            if(name.trim{it<=' '}.isNotEmpty() && lname.trim{it<=' '}.isNotEmpty() && job.trim{it<=' '}.isNotEmpty() && email.trim{it<=' '}.isNotEmpty() && password.trim{it<=' '}.isNotEmpty()){
+            if(name.trim{it<=' '}.isNotEmpty() && lname.trim{it<=' '}.isNotEmpty() && job.trim{it<=' '}.isNotEmpty() && email.trim{it<=' '}.isNotEmpty() && password.trim{it<=' '}.isNotEmpty() && userPassword.text.length>= 8){
                 return true
             }
+
             return false
         }
 
