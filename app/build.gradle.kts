@@ -75,5 +75,7 @@ dependencies {
     androidTestImplementation ("androidx.test:rules:1.1.0@aar")
     implementation(platform("com.google.firebase:firebase-bom:32.3.1"))
     implementation ("androidx.viewpager2:viewpager2:1.0.0")
+    implementation("com.facebook.android:facebook-share:[5,6)")
+
 
 }

@@ -6,6 +6,7 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
 import android.view.View
@@ -21,6 +22,10 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import com.facebook.share.model.ShareContent
+import com.facebook.share.model.ShareHashtag
+import com.facebook.share.model.ShareLinkContent
+import com.facebook.share.widget.ShareDialog
 import com.google.android.material.bottomsheet.BottomSheetDialog
 
 class CreatingPost : AppCompatActivity() {
@@ -164,6 +169,13 @@ class CreatingPost : AppCompatActivity() {
         val btnShare = findViewById<Button>(R.id.btnShare)
         btnShare.setOnClickListener {
             val imageToUpload = findViewById<ImageView>(R.id.imageToUpload)
+
+            val hashtag = ShareHashtag.Builder().setHashtag("#FOODBANK").build()
+            var content = ShareLinkContent.Builder().setQuote("This is a post made from the app!!")
+                .setShareHashtag(hashtag)
+                .setContentUrl(Uri.parse("https://bdalimentos.org/"))
+                .build()
+            ShareDialog.show(this@CreatingPost, content)
 
             if (imageToUpload.drawable != null && imageToUpload.drawable.constantState != resources.getDrawable(R.drawable.image_icon).constantState) {
                 showShareConfirmationDialog()
