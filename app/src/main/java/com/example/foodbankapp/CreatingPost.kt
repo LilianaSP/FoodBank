@@ -7,7 +7,6 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
-import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
 import android.view.View
@@ -15,7 +14,6 @@ import android.widget.Button
 import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.PopupMenu
-import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
@@ -23,11 +21,13 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import com.facebook.share.model.ShareContent
-import com.facebook.share.model.ShareHashtag
-import com.facebook.share.model.ShareLinkContent
 import com.facebook.share.widget.ShareDialog
 import com.google.android.material.bottomsheet.BottomSheetDialog
+import android.graphics.Canvas
+import android.graphics.drawable.BitmapDrawable
+import android.graphics.drawable.VectorDrawable
+import com.facebook.share.model.SharePhoto
+import com.facebook.share.model.SharePhotoContent
 
 class CreatingPost : AppCompatActivity() {
 
@@ -120,6 +120,7 @@ class CreatingPost : AppCompatActivity() {
                     val inputStream = contentResolver.openInputStream(selectedImageUri)
                     val bitmap = BitmapFactory.decodeStream(inputStream)
                     imageToUpload.setImageBitmap(bitmap)
+                    imageToUpload.tag = "userSet"
                 }
             }
         }
@@ -151,19 +152,21 @@ class CreatingPost : AppCompatActivity() {
             popupMenu.show()
         }
 
+
         // CANCEL BUTTON
         val btnCancel = findViewById<Button>(R.id.btnCancel)
         btnCancel.setOnClickListener {
-            val editTextDescription = findViewById<TextView>(R.id.editTextDescription)
             val imageToUpload = findViewById<ImageView>(R.id.imageToUpload)
-
-            val descriptionText = editTextDescription.text.toString().trim()
-
-            if (descriptionText.isNotEmpty() || (imageToUpload.drawable != null && imageToUpload.drawable.constantState != resources.getDrawable(R.drawable.image_icon).constantState)) {
+            if (imageToUpload.tag == "userSet") {
                 showCancelConfirmationDialog()
             } else {
                 showToast("No hay post por eliminar.")
             }
+        }
+
+        fun showToast(message: String) {
+            val toast = Toast.makeText(this, message, Toast.LENGTH_SHORT)
+            toast.show()
         }
 
         // POPUP DE QUE SE COMPARTIO CON EXITO
@@ -174,35 +177,63 @@ class CreatingPost : AppCompatActivity() {
         val btnShare = findViewById<Button>(R.id.btnShare)
 
         btnShare.setOnClickListener {
+            //val editTextDescription = findViewById<TextView>(R.id.editTextDescription)
+            //val descriptionText = editTextDescription.text.toString().trim()
             val imageToUpload = findViewById<ImageView>(R.id.imageToUpload)
+            val drawable = imageToUpload.drawable
 
-            val hashtag = ShareHashtag.Builder().setHashtag("#FOODBANK").build()
-            var content = ShareLinkContent.Builder().setQuote("This is a post made from the app!!")
-                .setShareHashtag(hashtag)
-                .setContentUrl(Uri.parse("https://bdalimentos.org/"))
-                .build()
-            ShareDialog.show(this@CreatingPost, content)
+            if (imageToUpload.drawable == null) {
+                showToast("Es necesario subir una imagen")
+                return@setOnClickListener
+            }
+
+            if (imageToUpload.tag == null || imageToUpload.tag != "userSet") {
+                showToast("Es necesario subir una imagen")
+                return@setOnClickListener
+            }
 
             if (imageToUpload.drawable != null && imageToUpload.drawable.constantState != resources.getDrawable(R.drawable.image_icon).constantState) {
-                val dialog = Dialog(this)
-                dialog.setContentView(R.layout.post_uploaded_popup)
-
-                // Personaliza el contenido del diálogo según tus necesidades
-                // Por ejemplo, puedes configurar un texto personalizado o un botón "Aceptar".
-
-                // Añade un botón de "Aceptar" al diálogo
-                val btnAceptar = dialog.findViewById<Button>(R.id.confirmPasswordButton)
-
-                btnAceptar.setOnClickListener {
-                    dialog.dismiss() // Cierra el diálogo cuando se hace clic en "Aceptar"
+                val bitmap: Bitmap = when (drawable) {
+                    is BitmapDrawable -> drawable.bitmap
+                    is VectorDrawable -> {
+                        Bitmap.createBitmap(drawable.intrinsicWidth, drawable.intrinsicHeight, Bitmap.Config.ARGB_8888).also { //se construye la imagen bitmap
+                            val canvas = Canvas(it)
+                            drawable.setBounds(0, 0, canvas.width, canvas.height)
+                            drawable.draw(canvas)
+                        }
+                    }
+                    else -> throw IllegalArgumentException("Unsupported drawable type")
                 }
 
-                dialog.show()
+                val photo = SharePhoto.Builder() //constructor de imagen para fb
+                    .setBitmap(bitmap)
+                    .build()
+
+                val content = SharePhotoContent.Builder()//constructor de imagen en post para fb
+                    .addPhoto(photo)
+                    .build()
+
+                val dialog = Dialog(this)
+                dialog.setContentView(R.layout.post_uploaded_popup) //se muestra popup de redireccionando a fb
+
+                // verificamos que el usuario haya podido compartir a fb correctamente
+                if (ShareDialog.canShow(SharePhotoContent::class.java)) {
+                    val btnAceptar = dialog.findViewById<Button>(R.id.confirmPasswordButton)
+
+                    btnAceptar.setOnClickListener {
+                        dialog.dismiss()
+                        ShareDialog.show(this@CreatingPost, content)
+                        imageToUpload.setImageResource(R.drawable.image_icon) //se elimina la imagen para poder volver a upload
+                        imageToUpload.tag = null //se elimina el tag para mostrar error de no hay foto correctamente
+                    }
+                    dialog.show()
+                } else {
+                    showToast("Es necesario instalar el app de Facebook para terminar")
+                }
             } else {
-                showToast("No hay imagen seleccionada.")
+                showToast("Ninguna imagen seleccionada")
             }
         }
-
 
 
     }
@@ -229,6 +260,7 @@ class CreatingPost : AppCompatActivity() {
         if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == Activity.RESULT_OK) {
             val imageBitmap = data?.extras?.get("data") as Bitmap
             imageToUpload.setImageBitmap(imageBitmap)
+            imageToUpload.tag = "userSet"
         }
     }
 
@@ -236,18 +268,17 @@ class CreatingPost : AppCompatActivity() {
 
     // FUNCIÓN PARA CANCELAR POST:
     private fun showCancelConfirmationDialog() {
-        val editTextDescription = findViewById<TextView>(R.id.editTextDescription)
         val imageToUpload = findViewById<ImageView>(R.id.imageToUpload)
 
         val alertDialog = AlertDialog.Builder(this)
         alertDialog.setTitle("Cancelar Post")
         alertDialog.setMessage("¿Estás seguro de que deseas cancelar este post? La descripción y la imagen se eliminarán.")
         alertDialog.setPositiveButton("Sí") { _, _ ->
-            // Eliminar la descripción y configurar la imagen predeterminada
-            editTextDescription.text = null  // Borrar el texto
-            imageToUpload.setImageResource(R.drawable.image_icon) // Configurar la imagen predeterminada
+            // La imagen se regresa a default
+            imageToUpload.setImageResource(R.drawable.image_icon)
+            imageToUpload.tag = null
 
-            // Mostrar un Toast de confirmación
+            // Toast de confirmación
             val toast = Toast.makeText(this, "El post se ha eliminado correctamente.", Toast.LENGTH_SHORT)
             toast.show()
         }
@@ -255,7 +286,6 @@ class CreatingPost : AppCompatActivity() {
             dialog.dismiss()
         }
         alertDialog.show()
-
     }
 
     // TOAST de post compartido con éxito:
@@ -268,7 +298,7 @@ class CreatingPost : AppCompatActivity() {
 
         // VARIABLES PARA BACK (SAM, ANA) AQUÍ SE GUARDA LO QUE EL USUSARIO PONGA DE
         // DESCRIPCIÓN Y LA FOTO:
-        val editTextDescription = findViewById<TextView>(R.id.editTextDescription)
+        //val editTextDescription = findViewById<TextView>(R.id.editTextDescription)
         val imageToUpload = findViewById<ImageView>(R.id.imageToUpload)
 
         val alertDialog = AlertDialog.Builder(this)
@@ -277,7 +307,7 @@ class CreatingPost : AppCompatActivity() {
 
         alertDialog.setPositiveButton("Sí") { _, _ ->
             // Aquí puedes agregar la lógica para compartir en Facebook BACKEND!!
-            editTextDescription.text = null  // Borrar el texto
+            //editTextDescription.text = null  // Borrar el texto
             imageToUpload.setImageResource(R.drawable.image_icon) // Configurar la imagen predeterminada
             showToast("El post se ha compartido exitosamente en Facebook.")
         }
@@ -285,7 +315,7 @@ class CreatingPost : AppCompatActivity() {
         alertDialog.setNegativeButton("No") { _, _ ->
             // Aquí puedes agregar la lógica para eliminar el post BACKEND!!
 
-            editTextDescription.text = null  // Borrar el texto
+            //editTextDescription.text = null  // Borrar el texto
             imageToUpload.setImageResource(R.drawable.image_icon) // Configurar la imagen predeterminada
             showToast("El post se ha eliminado correctamente.")
         }

@@ -3,7 +3,6 @@ package com.example.foodbankapp
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.animation.Animation
@@ -214,6 +213,9 @@ class Donations : AppCompatActivity() {
                 // función para tomar los valores de progress, goal para después mostrarlos
                 fun updateProgressBars(selectedMonthData: MonthData) {
                     // Actualizar ProgressBar de Money (now clothes)
+                    progressBarMoney.max = selectedMonthData.goalMoney
+                    progressBarMeds.max = selectedMonthData.goalMeds
+                    progressBarFood.max = selectedMonthData.goalFood
                     progressBarMoney.progress = selectedMonthData.currentProgressMoney
                     progressTextMoney.text = "${selectedMonthData.currentProgressMoney} Pzs"
                     goalTextMoney.text = "Objetivo: ${selectedMonthData.goalMoney} Pzs"
