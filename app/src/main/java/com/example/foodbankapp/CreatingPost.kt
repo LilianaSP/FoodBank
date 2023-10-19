@@ -2,6 +2,7 @@ package com.example.foodbankapp
 
 import android.Manifest
 import android.app.Activity
+import android.app.Dialog
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
@@ -160,13 +161,31 @@ class CreatingPost : AppCompatActivity() {
             }
         }
 
+        // POPUP DE QUE SE COMPARTIO CON EXITO
+        val uploaded_photo = layoutInflater.inflate(R.layout.post_uploaded_popup, null)
+
+
         // SHARE POST TO FACEBOOK BUTTON
         val btnShare = findViewById<Button>(R.id.btnShare)
+
         btnShare.setOnClickListener {
             val imageToUpload = findViewById<ImageView>(R.id.imageToUpload)
 
             if (imageToUpload.drawable != null && imageToUpload.drawable.constantState != resources.getDrawable(R.drawable.image_icon).constantState) {
-                showShareConfirmationDialog()
+                val dialog = Dialog(this)
+                dialog.setContentView(R.layout.post_uploaded_popup)
+
+                // Personaliza el contenido del diálogo según tus necesidades
+                // Por ejemplo, puedes configurar un texto personalizado o un botón "Aceptar".
+
+                // Añade un botón de "Aceptar" al diálogo
+                val btnAceptar = dialog.findViewById<Button>(R.id.confirmPasswordButton)
+
+                btnAceptar.setOnClickListener {
+                    dialog.dismiss() // Cierra el diálogo cuando se hace clic en "Aceptar"
+                }
+
+                dialog.show()
             } else {
                 showToast("No hay imagen seleccionada.")
             }

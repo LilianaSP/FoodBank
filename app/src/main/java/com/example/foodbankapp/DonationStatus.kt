@@ -5,7 +5,6 @@ import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
@@ -49,9 +48,6 @@ class DonationStatus : AppCompatActivity() {
             // Oculta el fondo semi-transparente cuando se cierra el diálogo
             backgroundSemiTransparent.visibility = View.INVISIBLE
         }
-
-
-
 
 
         //Obtenemos las referencias de los botones del dashboardmenu
@@ -128,6 +124,7 @@ class DonationStatus : AppCompatActivity() {
             backgroundSemiTransparent.visibility = View.VISIBLE
         }
 
+
         // >>>>>>>>>> LÓGICA PARA LA INFO DEL FOLIO:
 
         // ============ Aquí se puede implementar el backedn ==============
@@ -153,6 +150,7 @@ class DonationStatus : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
+
     }
 
     private fun showSemiTransparentDialog(dialog: Dialog) {
@@ -173,11 +171,11 @@ class DonationStatus : AppCompatActivity() {
 
         confirmCompletedButton.setOnClickListener {
             dialog.dismiss()
-            backgroundSemiTransparent.visibility = View.VISIBLE
             showTakePictureDialog()
         }
 
         showSemiTransparentDialog(dialog)
+
     }
 
     private fun showTakePictureDialog() {
@@ -246,9 +244,16 @@ class DonationStatus : AppCompatActivity() {
             if (donationID != null) {
                 db.collection("DONATION LOG").document(donationID).update(status)
             }
+            dialog.setOnDismissListener{
+                backgroundSemiTransparent.visibility = View.INVISIBLE
+            }
 
             dialog.dismiss()
+
         }
+
+
+
 
         completadoButton.setOnClickListener {
             buttonToUpdate.setBackgroundColor(Color.parseColor("#06CB52"))
@@ -264,6 +269,7 @@ class DonationStatus : AppCompatActivity() {
             dialog.dismiss()
         }
 
+
         canceladoButton.setOnClickListener {
             buttonToUpdate.setBackgroundColor(Color.parseColor("#DD0E2A"))
             buttonToUpdate.text = "Cancelada"
@@ -276,9 +282,12 @@ class DonationStatus : AppCompatActivity() {
             }
             createCanceledStatusDialog()
             dialog.dismiss()
+
         }
 
         dialog.show()
+
+
     }
     private fun setText(donationId:String)
     {
