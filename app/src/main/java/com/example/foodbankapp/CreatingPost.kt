@@ -190,6 +190,8 @@ class CreatingPost : AppCompatActivity() {
                 .build()
             ShareDialog.show(this@CreatingPost, content)
 
+
+
             if (imageToUpload.drawable != null && imageToUpload.drawable.constantState != resources.getDrawable(R.drawable.image_icon).constantState) {
                 val dialog = Dialog(this)
                 dialog.setContentView(R.layout.post_uploaded_popup)
