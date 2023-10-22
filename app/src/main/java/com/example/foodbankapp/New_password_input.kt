@@ -18,6 +18,9 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 
 class New_password_input : AppCompatActivity() {
 
@@ -55,7 +58,7 @@ class New_password_input : AppCompatActivity() {
 
         // Función de backButton
         backButton.setOnClickListener{
-            val intent = Intent(this, LogInActivity::class.java)
+            val intent = Intent(this, EditProfile::class.java)
             startActivity(intent)
             finish()
         }
@@ -112,6 +115,24 @@ class New_password_input : AppCompatActivity() {
             val confirmPassword = confirmPasswordInput.text.toString()
 
             if (isPasswordValid(password, confirmPassword)) {
+                val user = Firebase.auth.currentUser
+                user!!.updatePassword(confirmPassword).addOnCompleteListener { task->
+                    if(task.isSuccessful){
+                        Toast.makeText(
+                            this,
+                            "Contraseña actualizada con éxito",
+                            Toast.LENGTH_LONG
+                        ).show()
+                        val intent = Intent(this, LogInActivity::class.java)
+                        startActivity(intent)
+                        finish()
+                    }
+                    else{
+                        Toast.makeText(this, task.exception?.message, Toast.LENGTH_LONG).show()
+                    }
+                }
+
+                /*
                 // modificar el background de acuerdo con el popup
                 val backgroundSemiTransparent = findViewById<FrameLayout>(R.id.background_dim)
 
@@ -144,16 +165,11 @@ class New_password_input : AppCompatActivity() {
 
                 dialog.show()
 
-
+                 */
             } else {
                 Toast.makeText(this, "Revisa los datos", Toast.LENGTH_SHORT).show()
             }
         }
-
-
-
-
-
     }
 
     //Función del toggle de la contraseña
